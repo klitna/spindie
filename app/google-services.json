@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "545983246597",
+    "project_id": "spindie-4c2a0",
+    "storage_bucket": "spindie-4c2a0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:545983246597:android:4f5c4819d71efad81fc76c",
+        "android_client_info": {
+          "package_name": "com.example.spindie"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "545983246597-8u5ogfrfhd6cees4robg47tiertma6ko.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-6uZLpKcCmz3QdqA-9I_iexwZ1CvuW_U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "545983246597-8u5ogfrfhd6cees4robg47tiertma6ko.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
