@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:layout_gravity="center"
     android:layout_height="match_parent"
     tools:context=".SignInActivity">
 
@@ -10,28 +11,31 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@color/light_black"
+
         android:gravity="center"
-        tools:layout_editor_absoluteX="32dp"
-        tools:layout_editor_absoluteY="155dp">
+        android:background="@drawable/background_gradient">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="40dp"
+            android:gravity="center"
             android:text="SPINDIE"
             android:textColor="@color/white"
             android:textSize="40dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:ignore="MissingConstraints" />
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="493dp"
-            android:layout_gravity="bottom"
+            android:id="@+id/linearLayout"
+            android:layout_width="325dp"
+            android:layout_height="453dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="84dp"
             android:background="@drawable/login_layout_shape"
             android:gravity="center"
             android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent">
+            tools:layout_editor_absoluteX="46dp">
 
             <ImageView
                 android:layout_width="50dp"
@@ -53,13 +57,15 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="40dp"
-                android:background="@color/blue"
+                android:backgroundTint="@color/green"
+                android:shadowColor="@color/white"
+                android:shadowRadius="100px"
                 android:text="SIGN IN WITH GOOGLE"
+                android:textColor="@color/white"
                 tools:layout_editor_absoluteX="50dp"
                 tools:layout_editor_absoluteY="50dp" />
 
         </LinearLayout>
-
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
