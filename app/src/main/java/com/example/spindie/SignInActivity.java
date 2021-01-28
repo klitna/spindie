@@ -28,7 +28,7 @@ public class SignInActivity extends AppCompatActivity {
     FirebaseAuth myAuth;
     GoogleSignInClient googleSignInClient;
     Button signInButton;
-    @Override
+    /*@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
@@ -105,6 +105,6 @@ public class SignInActivity extends AppCompatActivity {
                         // ...
                     }
                 });
-    }
+    }*/
 
 }
