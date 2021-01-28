@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
+    <color name="light_black">#1D2020</color>
+    <color name="grey">#333938</color>
+    <color name="light_grey">#4D5756</color>
+    <color name="blue">#77F9E9</color>
+    <color name="green">#8BF89F</color>
+    <color name="yellow">#F4DF66</color>
+    <color name="red">#FE7171</color>
     <color name="white">#FFFFFFFF</color>
 
-<!--    Project Colors-->
+<!--    Project Colors
 
     <color name="purple">#DD9DFE</color>
     <color name="green">#4CE97D</color>
     <color name="yellow">#FCD250</color>
     <color name="red">#FB586B</color>
     <color name="blue">#00E1FF</color>
+    -->
 </resources>
