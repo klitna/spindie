@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+<!--    Project Colors-->
+    <color name="eerie_black">#1D2020</color>
+    <color name="onyx">#333938</color>
+    <color name="davys_grey">#4D5756</color>
+    <color name="light_green">#8BF89F</color>
+    <color name="minion_yellow">#F4DF66</color>
+    <color name="light_coral">#FE7171</color>
+    <color name="turquoise_blue">#77F9E9</color>
+
     <color name="light_black">#1D2020</color>
     <color name="grey">#333938</color>
     <color name="light_grey">#4D5756</color>
