@@ -8,26 +8,20 @@
 
     <FrameLayout
         android:id="@+id/frameLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/mainFragment"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        android:layout_height="618dp"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" >
+
+    </FrameLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -35,35 +29,43 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/btnStart"
+                style="@style/Widget.AppCompat.Button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Start" />
+                android:text="Start"
+                tools:ignore="ButtonStyle" />
 
             <Button
                 android:id="@+id/btnSearch"
+                style="@style/Widget.AppCompat.Button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Search" />
+                android:text="Search"
+                tools:ignore="ButtonStyle" />
 
             <Button
                 android:id="@+id/btnStore"
+                style="@style/Widget.AppCompat.Button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Store" />
+                android:text="Store"
+                tools:ignore="ButtonStyle" />
 
             <Button
                 android:id="@+id/btnConfig"
+                style="@style/Widget.AppCompat.Button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Config" />
+                android:text="Config"
+                tools:ignore="ButtonStyle" />
 
         </LinearLayout>
     </com.google.android.material.bottomnavigation.BottomNavigationView>

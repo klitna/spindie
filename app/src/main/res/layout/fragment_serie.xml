@@ -64,10 +64,11 @@
             <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                app:videoId="HuI6i_IL6Y0"
+                android:layout_marginTop="20dp"
+                android:visibility="visible"
                 app:autoPlay="false"
-                app:showYouTubeButton="false">
+                app:showYouTubeButton="false"
+                app:videoId="HuI6i_IL6Y0">
 
             </com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView>
 
@@ -79,12 +80,26 @@
                     android:id="@+id/seasonList"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginTop="20dp"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent">
+
+                </androidx.recyclerview.widget.RecyclerView>
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:visibility="visible"
+                app:autoPlay="false"
+                app:showYouTubeButton="false"
+                app:videoId="HuI6i_IL6Y0">
+
+            </com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView>
 
         </LinearLayout>
     </ScrollView>

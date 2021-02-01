@@ -27,7 +27,7 @@ public class Menu extends AppCompatActivity {
                 FragmentSerie fragmentSerie = new FragmentSerie();
                 FragmentManager menuManager = getSupportFragmentManager();
                 FragmentTransaction menuTransaction = menuManager.beginTransaction();
-                menuTransaction.replace(R.id.mainFragment, fragmentSerie);
+                menuTransaction.replace(R.id.frameLayout2, fragmentSerie);
                 menuTransaction.commit();
 
 

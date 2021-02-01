@@ -23,7 +23,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Write a message to the database
+        Intent intent = new Intent(this, Menu.class);
+        startActivity(intent);
+
+        /*// Write a message to the database
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("message");
         myRef.setValue("Hello, World!");
@@ -42,6 +45,6 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(goToRegister);
                 }
             }
-        }, 2000);
+        }, 2000);*/
     }
 }

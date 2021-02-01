@@ -23,7 +23,7 @@ public class SeasonAdapter extends RecyclerView.Adapter<SeasonAdapter.Holder> {
     @Override
     public Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.seasons, parent, false);
-
+        Log.i("provaLog", "Adapter onCreateViewHolder");
 
         return new Holder(view);
     }

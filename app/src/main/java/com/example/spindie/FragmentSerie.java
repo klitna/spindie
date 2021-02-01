@@ -27,10 +27,15 @@ public class FragmentSerie extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_serie, container, false);
 
+        Log.i("provaLog", "dentro fragment serie");
+        recyclerView = view.findViewById(R.id.seasonList);
+        list = new ArrayList<>();
 
         //Season recyclerView
-
-        list.add(new Serie("Season 1", "Betrayed Hamster"));
+        Serie serie = new Serie("Season 1", "Betrayed Hamster");
+        list.add(serie);
+        Log.i("provaLog", "list: "+list.get(0).getEpisodeName());
+        Log.i("provaLog", "list.size(): "+list.size());
         SeasonAdapter seasonAdapter = new SeasonAdapter(list);
         recyclerView.setAdapter(seasonAdapter);
         Log.i("provaLog", "Pasa por fragment serie, Adapter");
@@ -39,7 +44,6 @@ public class FragmentSerie extends Fragment {
         TextView description = view.findViewById(R.id.description);
         description.setMovementMethod(new ScrollingMovementMethod());
 
-        recyclerView = view.findViewById(R.id.seasonList);
 
         return view;
     }
