@@ -60,24 +60,24 @@ public class SignInActivity extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
-        if (requestCode == RC_SIGN_IN) {
-            Task task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            Exception ex = task.getException();
-            if(task.isSuccessful()) {
-                try {
-                    // Google Sign In was successful, authenticate with Firebase
-                    GoogleSignInAccount account = task.getResult(ApiException.class);
-                    Log.d("sign in result success: ", "firebaseAuthWithGoogle:" + account.getId());
-                    firebaseAuthWithGoogle(account.getIdToken());
-                } catch (ApiException e) {
-                    // Google Sign In failed, update UI appropriately
-                    Log.w("sign in result error: ", "Google sign in failed", e);
-                    // ...
-                }
-            }else{
-                Log.w("sign in result error: ", "Google sign in failed "+ex.toString());
-            }
-        }
+//        if (requestCode == RC_SIGN_IN) {
+//            Task task = GoogleSignIn.getSignedInAccountFromIntent(data);
+//            Exception ex = task.getException();
+//            if(task.isSuccessful()) {
+//                try {
+//                    // Google Sign In was successful, authenticate with Firebase
+//                    GoogleSignInAccount account = task.getResult(ApiException.class);
+//                    Log.d("sign in result success: ", "firebaseAuthWithGoogle:" + account.getId());
+//                    firebaseAuthWithGoogle(account.getIdToken());
+//                } catch (ApiException e) {
+//                    // Google Sign In failed, update UI appropriately
+//                    Log.w("sign in result error: ", "Google sign in failed", e);
+//                    // ...
+//                }
+//            }else{
+//                Log.w("sign in result error: ", "Google sign in failed "+ex.toString());
+//            }
+        //}
     }
 
     private void firebaseAuthWithGoogle(String idToken) {
