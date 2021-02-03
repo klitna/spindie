@@ -15,6 +15,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -31,7 +32,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class SignInActivity extends AppCompatActivity {
-    Button btnGoogleLogin;
+    SignInButton btnGoogleLogin;
     GoogleSignInOptions gso;
     GoogleSignInClient mGoogleSignInClient;
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
@@ -80,6 +81,8 @@ public class SignInActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == RC_SIGN_IN) {
             checkUserGetLoggedInOrNot(data);
+            startActivity(new Intent(SignInActivity.this, MainActivity.class));
+            finish();
         }
     }
 

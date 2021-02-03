@@ -51,19 +51,14 @@
                 android:textColor="@color/light_black"
                 android:textSize="15dp" />
 
-            <Button
+            <com.google.android.gms.common.SignInButton
                 android:id="@+id/signInButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="40dp"
-                android:backgroundTint="@color/blue"
-                android:shadowColor="@color/white"
-                android:shadowRadius="100px"
-                android:text="SIGN IN WITH GOOGLE"
-                android:textColor="@color/white"
-                tools:layout_editor_absoluteX="50dp"
-                tools:layout_editor_absoluteY="50dp" />
+                android:layout_marginTop="80dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </LinearLayout>
     </LinearLayout>
