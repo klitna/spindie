@@ -1,33 +1,42 @@
 {
   "project_info": {
-    "project_number": "545983246597",
-    "project_id": "spindie-4c2a0",
-    "storage_bucket": "spindie-4c2a0.appspot.com"
+    "project_number": "1074196138383",
+    "firebase_url": "https://spindie-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "spindie",
+    "storage_bucket": "spindie.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:545983246597:android:4f5c4819d71efad81fc76c",
+        "mobilesdk_app_id": "1:1074196138383:android:b1c23f00a75652af2763fa",
         "android_client_info": {
           "package_name": "com.example.spindie"
         }
       },
       "oauth_client": [
         {
-          "client_id": "545983246597-8u5ogfrfhd6cees4robg47tiertma6ko.apps.googleusercontent.com",
+          "client_id": "1074196138383-am0hkikm24esci543aurq6uq5p1v7nmf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.spindie",
+            "certificate_hash": "1c85779696f664af4b32c047da8cb51ef774e2ff"
+          }
+        },
+        {
+          "client_id": "1074196138383-b085bh9qu7dof1udjm8soq89hlquj0mm.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyB-6uZLpKcCmz3QdqA-9I_iexwZ1CvuW_U"
+          "current_key": "AIzaSyBTrpvRzjSq68N5D3g3i7jQA_Avau_yWDE"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "545983246597-8u5ogfrfhd6cees4robg47tiertma6ko.apps.googleusercontent.com",
+              "client_id": "1074196138383-b085bh9qu7dof1udjm8soq89hlquj0mm.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
