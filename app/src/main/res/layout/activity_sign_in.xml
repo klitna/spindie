@@ -57,7 +57,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="40dp"
-                android:backgroundTint="@color/green"
+                android:backgroundTint="@color/blue"
                 android:shadowColor="@color/white"
                 android:shadowRadius="100px"
                 android:text="SIGN IN WITH GOOGLE"
