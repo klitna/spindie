@@ -49,7 +49,7 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     private void init() {
-        btnGoogleLogin = findViewById(R.id.signInButton);
+        btnGoogleLogin = findViewById(R.id.sign_in_button);
     }
 
     // Configure Google Sign In
@@ -66,6 +66,7 @@ public class SignInActivity extends AppCompatActivity {
         btnGoogleLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 startGoogleSignIn();
             }
         });
@@ -125,7 +126,6 @@ public class SignInActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
             }
         });
     }

@@ -16,7 +16,13 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
 
-<!--    Project Colors-->
+
+<!--    Project Colors
 
     <color name="purple">#DD9DFE</color>
+    <color name="green">#4CE97D</color>
+    <color name="yellow">#FCD250</color>
+    <color name="red">#FB586B</color>
+    <color name="blue">#00E1FF</color>
+    -->
 </resources>
