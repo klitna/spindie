@@ -49,7 +49,7 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     private void init() {
-        btnGoogleLogin = findViewById(R.id.sign_in_button);
+        btnGoogleLogin = findViewById(R.id.signInButton);
     }
 
     // Configure Google Sign In
@@ -81,8 +81,6 @@ public class SignInActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == RC_SIGN_IN) {
-            Log.i("LOGTEST", "hola222");
-
             checkUserGetLoggedInOrNot(data);
         }
     }
@@ -91,10 +89,9 @@ public class SignInActivity extends AppCompatActivity {
         Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
         try {
             GoogleSignInAccount account = task.getResult(ApiException.class);
-            Log.i("LOGTEST", "hola");
             doGoogleLoginWithFireBase(account);
         } catch (ApiException e) {
-            Toast.makeText(this, "Error While Login :", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Error While Login checkUserGetLoggedInOrNot:", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -107,7 +104,7 @@ public class SignInActivity extends AppCompatActivity {
                     Toast.makeText(SignInActivity.this, "Login Successfully", Toast.LENGTH_SHORT).show();
                     checkUserIsAlreadyExistInDatabase(task);
                 } else {
-                    Toast.makeText(SignInActivity.this, "Error in Login :", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignInActivity.this, "Error in Login doGoogleLoginWithFireBase:", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -129,7 +126,6 @@ public class SignInActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
             }
         });
     }
