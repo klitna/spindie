@@ -8,15 +8,16 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
+        android:background="@color/yellow"
         android:gravity="center">
 
         <Button
             android:id="@+id/signInButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="SIGN IN WITH GOOGLE"
+            android:text="@string/google_button"
             android:layout_gravity="center"
+            android:textColor="@color/black"
             tools:layout_editor_absoluteX="222dp"
             tools:layout_editor_absoluteY="351dp" />
     </LinearLayout>
