@@ -8,18 +8,17 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/yellow"
+        android:background="@color/white"
         android:gravity="center">
 
-        <Button
-            android:id="@+id/signInButton"
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/sign_in_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/google_button"
-            android:layout_gravity="center"
-            android:textColor="@color/black"
-            tools:layout_editor_absoluteX="222dp"
-            tools:layout_editor_absoluteY="351dp" />
+            android:layout_marginTop="80dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
