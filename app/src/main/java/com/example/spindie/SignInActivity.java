@@ -49,7 +49,7 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     private void init() {
-        btnGoogleLogin = findViewById(R.id.sign_in_button);
+        btnGoogleLogin = findViewById(R.id.signInButton);
     }
 
     // Configure Google Sign In
