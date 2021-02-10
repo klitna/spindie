@@ -11,13 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/background_gradient"
-        android:gravity="center"><![CDATA[
-        android:orientation="vertical"
-
-        android:gravity="center"
-        android:background="@drawable/background_gradient">
-
-        ]]>
+        android:gravity="center">
 
         <LinearLayout
             android:id="@+id/linearLayout"
@@ -34,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="40dp"
                 android:gravity="center"
-                android:text="SPINDIE"
+                android:text="@string/spindie"
                 android:textColor="@color/white"
                 android:textSize="40dp"
                 android:textStyle="bold" />
