@@ -49,7 +49,7 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     private void init() {
-        btnGoogleLogin = findViewById(R.id.sign_in_button);
+        btnGoogleLogin = findViewById(R.id.signInButton);
     }
 
     // Configure Google Sign In
@@ -116,10 +116,10 @@ public class SignInActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.child(loggedUserUniqueId).exists()) {
-                    startActivity(new Intent(SignInActivity.this, MainActivity.class));
+                    startActivity(new Intent(SignInActivity.this, HomeActivity.class));
                     finish();
                 } else {
-                    startActivity(new Intent(SignInActivity.this, MainActivity.class));
+                    startActivity(new Intent(SignInActivity.this, HomeActivity.class));
                     finish();
                 }
             }

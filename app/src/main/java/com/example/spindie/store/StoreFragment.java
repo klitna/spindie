@@ -15,20 +15,14 @@ import com.example.spindie.R;
 
 public class StoreFragment extends Fragment {
 
-    private StoreViewModel storeViewModel;
+    public StoreFragment(){
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        storeViewModel = new ViewModelProvider(this).get(StoreViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_search, container, false);
-        final TextView textView = root.findViewById(R.id.text_search);
+    }
 
-        storeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
-        return root;
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_store, container, false);
     }
 }
