@@ -10,9 +10,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/background_gradient"
+        android:orientation="vertical"
+
         android:gravity="center"
-        android:orientation="vertical">
+        android:background="@drawable/background_gradient">
 
         <TextView
             android:layout_width="wrap_content"
@@ -22,7 +23,8 @@
             android:text="SPINDIE"
             android:textColor="@color/white"
             android:textSize="40dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:ignore="MissingConstraints" />
 
         <LinearLayout
             android:id="@+id/linearLayout"
@@ -32,7 +34,8 @@
             android:layout_marginBottom="84dp"
             android:background="@drawable/login_layout_shape"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            tools:layout_editor_absoluteX="46dp">
 
             <ImageView
                 android:layout_width="50dp"
@@ -52,7 +55,10 @@
                 android:id="@+id/signInButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="80dp" />
+                android:layout_marginTop="80dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </LinearLayout>
     </LinearLayout>
