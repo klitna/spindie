@@ -1,8 +1,14 @@
 package com.example.spindie;
 
+import android.content.ClipData;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -11,6 +17,7 @@ import androidx.navigation.ui.NavigationUI;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomeActivity extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +32,37 @@ public class HomeActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
+
+        navView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.navigation_home:
+                        break;
+                    case R.id.navigation_search:
+                        break;
+                    case R.id.navigation_more:
+                        goToMore();
+                        break;
+                    case R.id.navigation_store:
+                        break;
+                    case R.id.navigation_settings:
+                        break;
+                }
+                return false;
+            }
+        });
+
+
+    }
+
+
+    public void goToMore(){
+        FragmentSerie fragmentSerie = new FragmentSerie();
+        FragmentManager menuManager = getSupportFragmentManager();
+        FragmentTransaction menuTransaction = menuManager.beginTransaction();
+        menuTransaction.replace(R.id.nav_host_fragment, fragmentSerie);
+        menuTransaction.commit();
     }
 
 }
