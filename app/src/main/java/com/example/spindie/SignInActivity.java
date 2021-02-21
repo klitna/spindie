@@ -91,7 +91,7 @@ public class SignInActivity extends AppCompatActivity {
             GoogleSignInAccount account = task.getResult(ApiException.class);
             doGoogleLoginWithFireBase(account);
         } catch (ApiException e) {
-            Toast.makeText(this, "Error While Login :", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Error While Login checkUserGetLoggedInOrNot:", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -104,7 +104,7 @@ public class SignInActivity extends AppCompatActivity {
                     Toast.makeText(SignInActivity.this, "Login Successfully", Toast.LENGTH_SHORT).show();
                     checkUserIsAlreadyExistInDatabase(task);
                 } else {
-                    Toast.makeText(SignInActivity.this, "Error in Login :", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignInActivity.this, "Error in Login doGoogleLoginWithFireBase:", Toast.LENGTH_SHORT).show();
                 }
             }
         });
