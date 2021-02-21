@@ -16,20 +16,16 @@ import com.example.spindie.R;
 
 public class MoreFragment extends Fragment {
 
-    private MoreViewModel moreViewModel;
+    public MoreFragment(){
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        moreViewModel = new ViewModelProvider(this).get(MoreViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_more, container, false);
-        final TextView textView = root.findViewById(R.id.text_more);
-
-        moreViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
-        return root;
     }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_more, container, false);
+    }
+
+
 }
