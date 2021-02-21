@@ -18,11 +18,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="40dp"
+            android:fontFamily="@font/poppins_bold"
             android:gravity="center"
-            android:text="SPINDIE"
+            android:text="@string/app_name"
             android:textColor="@color/white"
             android:textSize="40dp"
-            android:textStyle="bold"
             tools:ignore="MissingConstraints" />
 
         <LinearLayout
@@ -46,7 +46,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sign In with Google"
+                android:text="@string/google_button"
+                android:fontFamily="@font/poppins_regular"
                 android:textColor="@color/light_black"
                 android:textSize="15dp" />
 

@@ -11,12 +11,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
-public class Menu extends Fragment {
+public class MenuFragment extends Fragment {
 
-    public Menu() {
+    public MenuFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -38,7 +37,7 @@ public class Menu extends Fragment {
 
             }
         });
-        ImageButton imageButtonSeries = viewMenu.findViewById(R.id.imageButtonSeries);
+        ImageButton imageButtonSeries = viewMenu.findViewById(R.id.imageButtonMovies);
         imageButtonSeries.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
