@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.spindie.Model.Entities.User.ReadWriteUser;
+import com.example.spindie.Model.Entities.User.User;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -31,13 +33,17 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class SignInActivity extends AppCompatActivity {
+    DatabaseReference dbReference = FirebaseDatabase.getInstance().getReference();
+    ReadWriteUser dbUser = new ReadWriteUser(dbReference);
     SignInButton btnGoogleLogin;
     GoogleSignInOptions gso;
     GoogleSignInClient mGoogleSignInClient;
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
     DatabaseReference mDataBaseRef = FirebaseDatabase.getInstance().getReference();
-
     public static final int RC_SIGN_IN = 121;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +72,6 @@ public class SignInActivity extends AppCompatActivity {
         btnGoogleLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 startGoogleSignIn();
             }
         });
@@ -112,13 +117,19 @@ public class SignInActivity extends AppCompatActivity {
 
     private void checkUserIsAlreadyExistInDatabase(Task<AuthResult> task) {
         final String loggedUserUniqueId = task.getResult().getUser().getUid();
+        final String userEmail = task.getResult().getUser().getEmail();
+        final String userName = task.getResult().getUser().getDisplayName();
         mDataBaseRef.child("Users").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.child(loggedUserUniqueId).exists()) {
+                    dbUser.getAllUsers();
                     startActivity(new Intent(SignInActivity.this, MainActivity.class));
                     finish();
                 } else {
+                    dbUser.getAllUsers();
+                    User user = new User(userName, userEmail, loggedUserUniqueId);
+                    dbUser.writeNewUser(user);
                     startActivity(new Intent(SignInActivity.this, HomeActivity.class));
                     finish();
                 }
@@ -129,6 +140,5 @@ public class SignInActivity extends AppCompatActivity {
             }
         });
     }
-
 
 }
