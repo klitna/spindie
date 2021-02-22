@@ -91,17 +91,6 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-                android:id="@+id/youTubePlayerView3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="visible"
-                app:autoPlay="false"
-                app:showYouTubeButton="false"
-                app:videoId="HuI6i_IL6Y0">
-
-            </com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView>
-
         </LinearLayout>
     </ScrollView>
 

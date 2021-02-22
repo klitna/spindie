@@ -3,27 +3,22 @@
     <item
         android:id="@+id/navigation_home"
         android:icon="@drawable/home"
-        android:title="@string/home"
-        android:onClick="goToHome"/>
+        android:title="@string/home"/>
     <item
         android:id="@+id/navigation_search"
         android:icon="@drawable/search"
-        android:title="@string/search"
-        android:onClick="goToSearch"/>
+        android:title="@string/search"/>
     <item
         android:id="@+id/navigation_more"
         android:icon="@drawable/more"
-        android:title="@string/more"
-        android:onClick="goToMore"/>
+        android:title="@string/more"/>
     <item
         android:id="@+id/navigation_store"
         android:icon="@drawable/store"
-        android:title="@string/store"
-        android:onClick="goToStore"/>
+        android:title="@string/store"/>
     <item
         android:id="@+id/navigation_settings"
         android:icon="@drawable/settings"
-        android:title="@string/settings"
-        android:onClick="goToSettings"/>
+        android:title="@string/settings"/>
 
 </menu>

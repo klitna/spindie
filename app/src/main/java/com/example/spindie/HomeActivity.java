@@ -42,7 +42,11 @@ public class HomeActivity extends AppCompatActivity {
                     case R.id.navigation_search:
                         break;
                     case R.id.navigation_more:
-                        goToMore();
+                        FragmentSerie fragmentSerie = new FragmentSerie();
+                        FragmentManager menuManager = getSupportFragmentManager();
+                        FragmentTransaction menuTransaction = menuManager.beginTransaction();
+                        menuTransaction.replace(R.id.nav_host_fragment, fragmentSerie);
+                        menuTransaction.commit();
                         break;
                     case R.id.navigation_store:
                         break;
@@ -55,15 +59,5 @@ public class HomeActivity extends AppCompatActivity {
 
 
     }
-
-
-    public void goToMore(){
-        FragmentSerie fragmentSerie = new FragmentSerie();
-        FragmentManager menuManager = getSupportFragmentManager();
-        FragmentTransaction menuTransaction = menuManager.beginTransaction();
-        menuTransaction.replace(R.id.nav_host_fragment, fragmentSerie);
-        menuTransaction.commit();
-    }
-
 }
 
