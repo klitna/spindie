@@ -28,6 +28,7 @@
         android:name="com.example.spindie.store.StoreFragment"
         android:label="@string/store"
         tools:layout="@layout/fragment_store" />
+
     <fragment
         android:id="@+id/navigation_settings"
         android:name="com.example.spindie.settings.SettingsFragment"
