@@ -11,10 +11,14 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.spindie.Model.Entities.Film.ReadWriteFilm;
+import com.example.spindie.Model.Entities.User.ReadWriteUser;
 import com.example.spindie.MoviesFragment;
 import com.example.spindie.MusicFragment;
 import com.example.spindie.R;
 import com.example.spindie.SeriesFragment;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class HomeFragment extends Fragment {
 
@@ -26,7 +30,9 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View viewHome = inflater.inflate(R.layout.fragment_home, container, false);
-
+        DatabaseReference mDataBaseRef = FirebaseDatabase.getInstance().getReference();
+        ReadWriteFilm db = new ReadWriteFilm(mDataBaseRef);
+        db.getFilmById("");
         ImageButton imageButtonMovies = viewHome.findViewById(R.id.imageButtonMovies);
         imageButtonMovies.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

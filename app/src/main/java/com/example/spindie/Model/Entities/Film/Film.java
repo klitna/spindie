@@ -1,27 +1,38 @@
 package com.example.spindie.Model.Entities.Film;
 
 public class Film {
-    private String productionDate;
+    private String year;
     private String imgUrl;
     private String videoUrl;
     private String id;
+    public String director;
+    public String actors;
 
     private String titleEN;
     private String descriptionEN;
-    private String directorEN;
-    private String actorsEN;
 
     private String titleES;
     private String descriptionES;
-    private String directorES;
-    private String actorsES;
+
+    Film(){
+        year="";
+        imgUrl="";
+        videoUrl="";
+        id="";
+        director="";
+        actors="";
+        titleEN="";
+        descriptionEN="";
+        titleES="";
+        descriptionES="";
+    }
 
     public String getId() {
         return id;
     }
 
-    public String getActorsES() {
-        return actorsES;
+    public String getActors() {
+        return actors;
     }
 
     public String getTitleES() {
@@ -36,28 +47,20 @@ public class Film {
         return descriptionES;
     }
 
-    public String getDirectorES() {
-        return directorES;
+    public String getDirector() {
+        return director;
     }
 
     public String getDescriptionEN() {
         return descriptionEN;
     }
 
-    public String getDirectorEN() {
-        return directorEN;
-    }
-
     public String getImgUrl() {
         return imgUrl;
     }
 
-    public String getProductionDate() {
-        return productionDate;
-    }
-
-    public String getActorsEN() {
-        return actorsEN;
+    public String getYear() {
+        return year;
     }
 
     public String getVideoUrl() {
@@ -79,11 +82,7 @@ public class Film {
     }
 
     public void setActorsEN(String actorsEN) {
-        this.actorsEN = actorsEN;
-    }
-
-    public void setActorsES(String actorsES) {
-        this.actorsES = actorsES;
+        this.actors = actors;
     }
 
     public void setDescriptionEN(String descriptionEN) {
@@ -95,15 +94,11 @@ public class Film {
     }
 
     public void setDirectorEN(String directorEN) {
-        this.directorEN = directorEN;
+        this.director = director;
     }
 
-    public void setDirectorES(String directorES) {
-        this.directorES = directorES;
-    }
-
-    public void setProductionDate(String productionDate) {
-        this.productionDate = productionDate;
+    public void setYear(String productionDate) {
+        this.year = productionDate;
     }
 
     public void setImgUrl(String imgUrl) {
