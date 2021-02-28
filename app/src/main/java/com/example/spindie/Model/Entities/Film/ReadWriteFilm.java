@@ -31,7 +31,9 @@ public class ReadWriteFilm {
         newFilm.put("title", film.getTitleES());
         newFilm.put("description", film.getDescriptionES());
         newFilm.put("actors", film.getActorsES());
-        newFilm.put("id", film.get());
+        newFilm.put("description", film.getDescriptionES());
+        //newFilm.put("")
+        newFilm.put("id", film.getId());
 
         // Add a new document with a generated ID
         db.collection("users")
