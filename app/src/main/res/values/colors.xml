@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="light_black">#1D2020</color>
+    <color name="light_bllack">#2B2D25  </color>
+
     <color name="grey">#333938</color>
     <color name="light_grey">#4D5756</color>
     <color name="blue">#77F9E9</color>
