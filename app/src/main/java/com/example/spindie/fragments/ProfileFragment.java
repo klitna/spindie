@@ -1,4 +1,4 @@
-package com.example.spindie;
+package com.example.spindie.fragments;
 
 import android.os.Bundle;
 
@@ -8,16 +8,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class SeriesFragment extends Fragment {
+import com.example.spindie.R;
 
-    public SeriesFragment() {
+public class ProfileFragment extends Fragment {
+
+    public ProfileFragment() {
         // Required empty public constructor
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View seriesView = inflater.inflate(R.layout.fragment_series, container, false);
-        return seriesView;
+        return inflater.inflate(R.layout.fragment_profile, container, false);
     }
 }
