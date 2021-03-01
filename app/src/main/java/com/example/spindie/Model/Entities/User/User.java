@@ -2,7 +2,6 @@ package com.example.spindie.Model.Entities.User;
 
 import com.example.spindie.Model.Entities.Film.*;
 import com.example.spindie.Model.Entities.OST.OST;
-import com.example.spindie.Model.Entities.Serie.*;
 
 import java.util.ArrayList;
 
