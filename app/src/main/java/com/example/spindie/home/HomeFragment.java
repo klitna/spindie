@@ -14,7 +14,8 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.spindie.MoviesFragment;
 import com.example.spindie.MusicFragment;
 import com.example.spindie.R;
-import com.example.spindie.SeriesFragment;
+import com.example.spindie.series.SeriesFragment;
+import com.example.spindie.series.SeriesFragmentOne;
 
 public class HomeFragment extends Fragment {
 

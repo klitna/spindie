@@ -1,4 +1,4 @@
-package com.example.spindie;
+package com.example.spindie.series;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -9,6 +9,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.spindie.R;
 
 import java.util.ArrayList;
 

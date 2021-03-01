@@ -1,13 +1,11 @@
-package com.example.spindie;
+package com.example.spindie.series;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.method.ScrollingMovementMethod;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -15,21 +13,21 @@ import android.view.ViewGroup;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.example.spindie.R;
+
 import java.util.ArrayList;
 
-
-public class FragmentSerie extends Fragment {
+public class SeriesFragmentOne extends Fragment {
     RecyclerView recyclerView;
     ArrayList<Serie> list;
 
-    public FragmentSerie() {
+    public SeriesFragmentOne() {
+        // Required empty public constructor
     }
-
-    @SuppressLint("ClickableViewAccessibility")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_serie, container, false);
+        View view = inflater.inflate(R.layout.fragment_series_one, container, false);
 
         recyclerView = view.findViewById(R.id.seasonList);
         list = new ArrayList<>();
