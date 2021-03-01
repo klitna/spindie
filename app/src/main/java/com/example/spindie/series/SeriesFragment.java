@@ -1,8 +1,10 @@
 package com.example.spindie.series;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -14,9 +16,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.spindie.R;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -73,42 +80,60 @@ public class SeriesFragment extends Fragment {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }*/
 
-            serieList = getData(serieList);
-
-            Context context = view.getContext();
-            RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.list);
-            recyclerView.setLayoutManager(new LinearLayoutManager(context));
 
 
+        serieList.add(new Serie("Shrek", "https://images.cdn2.buscalibre.com/fit-in/360x360/55/e2/55e28b4571d758e8efc35e6893eda69e.jpg", "Author"));
+        serieList.add(new Serie("Shrek", "https://images.cdn2.buscalibre.com/fit-in/360x360/55/e2/55e28b4571d758e8efc35e6893eda69e.jpg", "Author"));
+        serieList.add(new Serie("Shrek", "https://images.cdn2.buscalibre.com/fit-in/360x360/55/e2/55e28b4571d758e8efc35e6893eda69e.jpg", "Author"));
+        serieList.add(new Serie("Shrek", "https://images.cdn2.buscalibre.com/fit-in/360x360/55/e2/55e28b4571d758e8efc35e6893eda69e.jpg", "Author"));
+        serieList.add(new Serie("Shrek", "https://images.cdn2.buscalibre.com/fit-in/360x360/55/e2/55e28b4571d758e8efc35e6893eda69e.jpg", "Author"));
+        serieList.add(new Serie("Shrek", "https://images.cdn2.buscalibre.com/fit-in/360x360/55/e2/55e28b4571d758e8efc35e6893eda69e.jpg", "Author"));
 
-            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
-            recyclerView.setLayoutManager(linearLayoutManager);
-            Log.i("provaLog", "size 2: "+serieList.size());
-            recyclerView.setAdapter(new MySeriesRecyclerViewAdapter(serieList));
+        getData();
+
+        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.list);
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        Log.i("provaLog", "Size Después de getData(): "+serieList.size());
+        recyclerView.setAdapter(new MySeriesRecyclerViewAdapter(serieList));
+
+
         //}
         return view;
     }
 
-    public static List<Serie> getData(List<Serie> arrayList) {
+    public void getData() {
+
+        List<Serie> listaSe = new ArrayList<>();
+
         FirebaseFirestore mFirestore;
         mFirestore = FirebaseFirestore.getInstance();
-        for (int i = 1; i <= 2; i++) {
-           // mFirestore.collection("Film").document("OANtpIMTxEvGDM4DmkMc").get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            mFirestore.collection("Film").document(String.valueOf(i)).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                @Override
-                public void onSuccess(DocumentSnapshot documentSnapshot) {
-                    String name = documentSnapshot.getString("name");
-                    String image = documentSnapshot.getString("image");
-                    Log.i("provaLog", "Nombre: "+name);
-                    Log.i("provaLog", "Image: "+image);
-                    Serie serie = new Serie(name, image, "fakeAuthor");
-                    arrayList.add(serie);
-                    Log.i("provaLog", "size: "+arrayList.size());
-                }
-            });
 
-        }
-        Log.i("provaLog", "size fuera onSuccess: "+arrayList.size());
-        return arrayList;
+        mFirestore.collection("Film")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            String name, image;
+                            if (task.isSuccessful()) {
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    Log.d("aa", document.getId() + " => " + document.getData());
+                                    Log.d("aa", "NOMBRE" + " => " + document.getString("name"));
+                                    name = document.getString("name");
+                                    image = document.getString("image");
+                                    Log.i("provaLog", "Nombre: "+name);
+                                    Log.i("provaLog", "Image: "+image);
+                                    Serie serie = new Serie(name, image, "fakeAuthor");
+                                    serieList.add(serie);
+                                    Log.i("provaLog", "size onComplete  : "+serieList.size());
+
+                                }
+                                return;
+                            } else {
+                                Log.d("aa", "Error getting documents: ", task.getException());
+                            }
+                    }
+                });
     }
 }

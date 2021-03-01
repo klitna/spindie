@@ -2,6 +2,7 @@ package com.example.spindie.series;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.content.Context;
 import android.media.Image;
 import android.util.Log;
@@ -32,7 +33,6 @@ public class MySeriesRecyclerViewAdapter extends RecyclerView.Adapter<MySeriesRe
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.fragment_item_series, parent, false);
-        Log.i("provaLog", "pasa por aquí");
         return new ViewHolder(view);
     }
 
@@ -40,9 +40,9 @@ public class MySeriesRecyclerViewAdapter extends RecyclerView.Adapter<MySeriesRe
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.serie = seriesList.get(position);
         holder.titulo.setText(holder.serie.getName());
-        Glide.with(context).load(holder.serie.getImage()).into(holder.portada);
 
-
+        //IMPORTANTE QUE EL CONTEXTO SEA DE CADA ITEM PARA QUE FUNCIONE EL GLIDE EN EL RECYCLERVIEW
+        Glide.with(holder.itemView.getContext()).load(holder.serie.getImage()).into(holder.portada);
 
     }
 

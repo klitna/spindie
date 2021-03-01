@@ -38,7 +38,7 @@ public class HomeFragment extends Fragment {
 
                 menuTransaction.replace(R.id.nav_host_fragment, moviesFragment);
 
-                menuTransaction.commit();
+                menuTransaction.addToBackStack(null).commit();
 
             }
         });
@@ -52,7 +52,7 @@ public class HomeFragment extends Fragment {
 
                 menuTransaction.replace(R.id.nav_host_fragment, seriesFragment);
 
-                menuTransaction.commit();
+                menuTransaction.addToBackStack(null).commit();
 
             }
         });
@@ -66,7 +66,7 @@ public class HomeFragment extends Fragment {
 
                 menuTransaction.replace(R.id.nav_host_fragment, musicFragment);
 
-                menuTransaction.commit();
+                menuTransaction.addToBackStack(null).commit();
 
             }
         });
