@@ -8,7 +8,6 @@
     tools:context=".home.HomeFragment" >
 
 
-
     <ImageView
         android:id="@+id/imageViewPrincipal"
         android:layout_width="0dp"
