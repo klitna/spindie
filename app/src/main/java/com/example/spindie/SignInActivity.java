@@ -12,6 +12,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.spindie.Model.Entities.Film.Film;
+import com.example.spindie.Model.Entities.Film.ReadWriteFilm;
 import com.example.spindie.Model.Entities.User.ReadWriteUser;
 import com.example.spindie.Model.Entities.User.User;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -93,6 +95,9 @@ public class SignInActivity extends AppCompatActivity {
 
     public void checkUserGetLoggedInOrNot(Intent data){
         Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+        ReadWriteFilm rwf = new ReadWriteFilm(mDataBaseRef);
+        Film[] f =rwf.getFilmById("");
+        System.out.printf("", f);
         try {
             GoogleSignInAccount account = task.getResult(ApiException.class);
             doGoogleLoginWithFireBase(account);

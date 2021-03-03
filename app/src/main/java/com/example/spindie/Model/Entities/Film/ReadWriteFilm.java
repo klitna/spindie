@@ -16,6 +16,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Source;
 
+import java.security.spec.ECField;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -61,17 +62,22 @@ public class ReadWriteFilm {
     }
 
     //
-    public void getFilmById(String id){
+    public Film[] getFilmById(String id){
         id="e3FXe0KD4haiKo3E3Wyu";
         DocumentReference docRef = db.collection("films").document(id);
         final Film[] film = {new Film()};
+        final Film[] filmA = new Film[1];
+        try{
         docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
-                Film film = documentSnapshot.toObject(Film.class);
+                filmA[0] = documentSnapshot.toObject(Film.class);
             }
-        });
+        });}
+        catch (Exception ex){
+            throw ex;
+        }
+        return filmA;
     }
-
 
 }
