@@ -6,14 +6,18 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.spindie.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -89,23 +93,15 @@ public class SeriesFragment extends Fragment {
         serieList.add(new Serie("Shrek", "https://images.cdn2.buscalibre.com/fit-in/360x360/55/e2/55e28b4571d758e8efc35e6893eda69e.jpg", "Author"));
         serieList.add(new Serie("Shrek", "https://images.cdn2.buscalibre.com/fit-in/360x360/55/e2/55e28b4571d758e8efc35e6893eda69e.jpg", "Author"));
 
-        getData();
+        getData(view);
 
-        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.list);
-
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
-        recyclerView.setLayoutManager(linearLayoutManager);
-        Log.i("provaLog", "Size Después de getData(): "+serieList.size());
-        recyclerView.setAdapter(new MySeriesRecyclerViewAdapter(serieList));
 
 
         //}
         return view;
     }
 
-    public void getData() {
-
-        List<Serie> listaSe = new ArrayList<>();
+    public void getData(View view) {
 
         FirebaseFirestore mFirestore;
         mFirestore = FirebaseFirestore.getInstance();
@@ -116,6 +112,7 @@ public class SeriesFragment extends Fragment {
                     @Override
                         public void onComplete(@NonNull Task<QuerySnapshot> task) {
                             String name, image;
+                            int id;
                             if (task.isSuccessful()) {
                                 for (QueryDocumentSnapshot document : task.getResult()) {
                                     Log.d("aa", document.getId() + " => " + document.getData());
@@ -126,14 +123,25 @@ public class SeriesFragment extends Fragment {
                                     Log.i("provaLog", "Image: "+image);
                                     Serie serie = new Serie(name, image, "fakeAuthor");
                                     serieList.add(serie);
-                                    Log.i("provaLog", "size onComplete  : "+serieList.size());
-
+                                    //Log.i("provaLog", "size onComplete  : "+serieList.size());
                                 }
+                                callRecyclerView(view);
+
+
                                 return;
                             } else {
                                 Log.d("aa", "Error getting documents: ", task.getException());
                             }
                     }
                 });
+    }
+
+    public void callRecyclerView(View view){
+        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.list);
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        Log.i("provaLog", "Size Después de getData(): "+serieList.size());
+        recyclerView.setAdapter(new MySeriesRecyclerViewAdapter(serieList));
     }
 }

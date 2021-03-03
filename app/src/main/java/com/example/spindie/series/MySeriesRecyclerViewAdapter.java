@@ -1,5 +1,9 @@
 package com.example.spindie.series;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
@@ -44,6 +48,17 @@ public class MySeriesRecyclerViewAdapter extends RecyclerView.Adapter<MySeriesRe
         //IMPORTANTE QUE EL CONTEXTO SEA DE CADA ITEM PARA QUE FUNCIONE EL GLIDE EN EL RECYCLERVIEW
         Glide.with(holder.itemView.getContext()).load(holder.serie.getImage()).into(holder.portada);
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                goToSerieOne(holder.itemView);
+
+            }
+
+
+        });
+
     }
 
     @Override
@@ -70,5 +85,23 @@ public class MySeriesRecyclerViewAdapter extends RecyclerView.Adapter<MySeriesRe
         public String toString() {
             return super.toString();
         }
+    }
+
+
+    public void goToSerieOne(View itemView) {
+
+        /*Fragment seriesFragment = new SeriesFragment();
+        FragmentManager menuManager =
+        FragmentTransaction menuTransaction = menuManager.beginTransaction();
+
+        menuTransaction.replace(R.id.nav_host_fragment, seriesFragment);
+
+        menuTransaction.addToBackStack(null).commit();*/
+
+
+
+        AppCompatActivity activity = (AppCompatActivity) itemView.getContext();
+        Fragment myFragment = new SeriesFragmentOne();
+        activity.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, myFragment).addToBackStack(null).commit();
     }
 }

@@ -47,10 +47,13 @@ public class SeasonAdapter extends RecyclerView.Adapter<SeasonAdapter.Holder> {
         TextView title;
         ConstraintLayout expandableLayout;
 
+
         public Holder(@NonNull View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.seasonNumber);
             expandableLayout= itemView.findViewById(R.id.expandableLayout);
+
+
 
             title.setOnClickListener(new View.OnClickListener() {
                 @Override
