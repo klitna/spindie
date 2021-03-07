@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.PlayerFragment"
+    android:background="@color/black">
+
+    <ImageView
+        android:id="@+id/imageViewPlayer"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/nota_musical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="278dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewSongTittle2" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progressBar2">
+
+        <ImageButton
+            android:id="@+id/imageButtonFavorites"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:backgroundTint="#000000"
+            android:scaleType="centerCrop"
+            android:src="@drawable/favorite" />
+
+        <ImageButton
+            android:id="@+id/imageButtonPrevious"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:backgroundTint="#000000"
+            android:scaleType="centerCrop"
+            android:src="@drawable/previous" />
+
+        <ImageButton
+            android:id="@+id/imageButtonPlay"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:backgroundTint="#000000"
+            android:scaleType="centerCrop"
+            android:src="@drawable/play" />
+
+        <ImageButton
+            android:id="@+id/imageButtonNext"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:backgroundTint="#000000"
+            android:scaleType="centerCrop"
+            android:src="@drawable/next" />
+
+        <ImageButton
+            android:id="@+id/imageButtonRepeat"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:backgroundTint="#000000"
+            android:scaleType="centerCrop"
+            android:src="@drawable/repeat" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textViewSongTittle"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginStart="67dp"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="There Is a Light That Never Goes Out"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewPlayer" />
+
+    <TextView
+        android:id="@+id/textViewSongTittle2"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginStart="67dp"
+        android:layout_marginTop="2dp"
+        android:fontFamily="@font/poppins_light"
+        android:text="The Smiths"
+        android:textColor="@color/blue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewSongTittle" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

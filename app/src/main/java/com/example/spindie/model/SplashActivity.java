@@ -1,6 +1,4 @@
-package com.example.spindie;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.spindie.model;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,6 +6,8 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.WindowManager;
+
+import com.example.spindie.R;
 
 public class SplashActivity extends Activity {
 
