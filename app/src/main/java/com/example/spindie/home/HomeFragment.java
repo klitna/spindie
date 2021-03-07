@@ -11,10 +11,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.spindie.MoviesFragment;
+import com.example.spindie.MusicFragment;
 import com.example.spindie.R;
-import com.example.spindie.fragments.MoviesFragment;
-import com.example.spindie.fragments.MusicFragment;
-import com.example.spindie.fragments.SeriesFragment;
+import com.example.spindie.series.SeriesFragment;
+import com.example.spindie.series.SeriesFragmentOne;
 
 public class HomeFragment extends Fragment {
 
@@ -37,7 +38,7 @@ public class HomeFragment extends Fragment {
 
                 menuTransaction.replace(R.id.nav_host_fragment, moviesFragment);
 
-                menuTransaction.commit();
+                menuTransaction.addToBackStack(null).commit();
 
             }
         });
@@ -51,11 +52,10 @@ public class HomeFragment extends Fragment {
 
                 menuTransaction.replace(R.id.nav_host_fragment, seriesFragment);
 
-                menuTransaction.commit();
+                menuTransaction.addToBackStack(null).commit();
 
             }
         });
-
         ImageButton imageButtonMusic = viewHome.findViewById(R.id.imageButtonMusic);
         imageButtonMusic.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -66,7 +66,7 @@ public class HomeFragment extends Fragment {
 
                 menuTransaction.replace(R.id.nav_host_fragment, musicFragment);
 
-                menuTransaction.commit();
+                menuTransaction.addToBackStack(null).commit();
 
             }
         });
