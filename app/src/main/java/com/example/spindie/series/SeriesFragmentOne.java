@@ -101,7 +101,7 @@ public class SeriesFragmentOne extends Fragment {
                 final TextView name = (TextView) view.findViewById(R.id.textViewTitle);
                 final TextView description = (TextView) view.findViewById(R.id.textViewDescription);
                 final ImageView portada = (ImageView) view.findViewById(R.id.imageViewPortadaSerie);
-                YouTubePlayer youTubePlayer = view.findViewById(R.id.seriePlayer);
+                YouTubePlayerView youTubePlayerView = view.findViewById(R.id.seriePlayer);
 
                 String imageDB;
 
@@ -114,15 +114,12 @@ public class SeriesFragmentOne extends Fragment {
                         description.setText(document.getString("description"));
                         Glide.with(getContext()).load(imageDB).into(portada);
 
-                        //youTubePlayer.loadVideo("sfAc2U20uyg", 0);
+                        Log.i("provaLog", "youTubePlayerView.getId(): "+youTubePlayerView.getId());
+
+                        //String setVideoUrl = getString(R.string.url, "HuI6i_IL6Y0");
 
 
-                        YouTubePlayerUtils.loadOrCueVideo(
-                                youTubePlayer,
-                                getLifecycle(),
-                                "sfAc2U20uyg",
-                                0
-                        );
+
 
                     } else {
                         Log.d("provaLog", "No such document");
