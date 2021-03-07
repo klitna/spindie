@@ -12,9 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SPINDIE">
 
-       <activity android:name=".model.SplashActivity"></activity>
+       <activity android:name=".model.HomeActivity"></activity>
+        <activity android:name=".model.SignInActivity"></activity>
         <activity
-            android:name=".model.HomeActivity"
+            android:name=".model.SplashActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

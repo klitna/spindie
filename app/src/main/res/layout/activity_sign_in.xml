@@ -7,61 +7,74 @@
     android:layout_height="match_parent"
     tools:context=".model.SignInActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="1908dp"
+        android:layout_height="3121dp"
+        android:src="@drawable/bg_login_bw"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.683"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.468"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textView2"
+        style="@android:style/Animation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:gravity="center"
-        android:background="@drawable/background_gradient">
+        android:shadowColor="@color/green"
+        android:shadowRadius="@android:integer/config_mediumAnimTime"
+        android:text="SPINDIE"
+        android:textColor="@color/white"
+        android:textSize="200px"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints"></TextView>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="337dp"
+        android:layout_height="275dp"
+        android:layout_gravity="center"
+        android:background="@drawable/login_layout_shape"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/google_logo"
+            android:scaleType="fitXY" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="40dp"
-            android:fontFamily="@font/poppins_bold"
-            android:gravity="center"
-            android:text="@string/app_name"
-            android:textColor="@color/white"
-            android:textSize="40dp"
-            tools:ignore="MissingConstraints" />
+            android:fontFamily="@font/poppins_regular"
+            android:text="@string/google_button"
+            android:textColor="@color/light_black"
+            android:textSize="15dp" />
 
-        <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="325dp"
-            android:layout_height="453dp"
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/signInButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginBottom="84dp"
-            android:background="@drawable/login_layout_shape"
-            android:gravity="center"
-            android:orientation="vertical"
-            tools:layout_editor_absoluteX="46dp">
+            android:layout_marginTop="80dp"
+            android:backgroundTint="@color/green"
+            app:colorScheme="auto" />
 
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_margin="10dp"
-                android:background="@drawable/google_logo"
-                android:scaleType="fitXY" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/google_button"
-                android:fontFamily="@font/poppins_regular"
-                android:textColor="@color/light_black"
-                android:textSize="15dp" />
-
-            <com.google.android.gms.common.SignInButton
-                android:id="@+id/signInButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="80dp"
-                app:colorScheme="auto"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </LinearLayout>
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
