@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".series.SeriesFragment"
-    android:background="@android:color/holo_orange_light">
+    android:background="@android:color/holo_orange_light"
+    android:id="@+id/frameOrange">
 
     <ScrollView
         android:id="@+id/scrollView"
@@ -70,7 +71,7 @@
                 android:visibility="visible"
                 app:autoPlay="false"
                 app:showYouTubeButton="false"
-                app:videoId="HuI6i_IL6Y0">
+                >
 
             </com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView>
 

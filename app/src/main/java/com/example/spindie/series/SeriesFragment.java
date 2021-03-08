@@ -86,12 +86,13 @@ public class SeriesFragment extends Fragment {
 
 
 
-        serieList.add(new Serie("Shrek", "https://images.cdn2.buscalibre.com/fit-in/360x360/55/e2/55e28b4571d758e8efc35e6893eda69e.jpg", "Author"));
-        serieList.add(new Serie("Shrek", "https://images.cdn2.buscalibre.com/fit-in/360x360/55/e2/55e28b4571d758e8efc35e6893eda69e.jpg", "Author"));
-        serieList.add(new Serie("Shrek", "https://images.cdn2.buscalibre.com/fit-in/360x360/55/e2/55e28b4571d758e8efc35e6893eda69e.jpg", "Author"));
-        serieList.add(new Serie("Shrek", "https://images.cdn2.buscalibre.com/fit-in/360x360/55/e2/55e28b4571d758e8efc35e6893eda69e.jpg", "Author"));
-        serieList.add(new Serie("Shrek", "https://images.cdn2.buscalibre.com/fit-in/360x360/55/e2/55e28b4571d758e8efc35e6893eda69e.jpg", "Author"));
-        serieList.add(new Serie("Shrek", "https://images.cdn2.buscalibre.com/fit-in/360x360/55/e2/55e28b4571d758e8efc35e6893eda69e.jpg", "Author"));
+        serieList.add(new Serie("1", "Shrek", "https://images.cdn2.buscalibre.com/fit-in/360x360/55/e2/55e28b4571d758e8efc35e6893eda69e.jpg", "Author"));
+        serieList.add(new Serie("1", "Shrek", "https://images.cdn2.buscalibre.com/fit-in/360x360/55/e2/55e28b4571d758e8efc35e6893eda69e.jpg", "Author"));
+        serieList.add(new Serie("1", "Shrek", "https://images.cdn2.buscalibre.com/fit-in/360x360/55/e2/55e28b4571d758e8efc35e6893eda69e.jpg", "Author"));
+        serieList.add(new Serie("1", "Shrek", "https://images.cdn2.buscalibre.com/fit-in/360x360/55/e2/55e28b4571d758e8efc35e6893eda69e.jpg", "Author"));
+        serieList.add(new Serie("1", "Shrek", "https://images.cdn2.buscalibre.com/fit-in/360x360/55/e2/55e28b4571d758e8efc35e6893eda69e.jpg", "Author"));
+        serieList.add(new Serie("1", "Shrek", "https://images.cdn2.buscalibre.com/fit-in/360x360/55/e2/55e28b4571d758e8efc35e6893eda69e.jpg", "Author"));
+
 
         getData(view);
 
@@ -112,16 +113,18 @@ public class SeriesFragment extends Fragment {
                     @Override
                         public void onComplete(@NonNull Task<QuerySnapshot> task) {
                             String name, image;
-                            int id;
+                            String id;
                             if (task.isSuccessful()) {
                                 for (QueryDocumentSnapshot document : task.getResult()) {
                                     Log.d("aa", document.getId() + " => " + document.getData());
                                     Log.d("aa", "NOMBRE" + " => " + document.getString("name"));
                                     name = document.getString("name");
                                     image = document.getString("image");
-                                    Log.i("provaLog", "Nombre: "+name);
-                                    Log.i("provaLog", "Image: "+image);
-                                    Serie serie = new Serie(name, image, "fakeAuthor");
+                                    id = document.getId();
+
+                                    //Log.i("provaLog", "Nombre: "+name);
+                                    //Log.i("provaLog", "Image: "+image);
+                                    Serie serie = new Serie(id, name, image, "fakeAuthor");
                                     serieList.add(serie);
                                     //Log.i("provaLog", "size onComplete  : "+serieList.size());
                                 }

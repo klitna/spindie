@@ -1,6 +1,7 @@
 package com.example.spindie.series;
 
 import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,7 +14,9 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -28,6 +31,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerListener;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.utils.YouTubePlayerUtils;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
@@ -40,9 +44,16 @@ import java.util.ArrayList;
 public class SeriesFragmentOne extends Fragment {
     RecyclerView recyclerView;
     ArrayList<Serie> list;
+    YouTubePlayerView youTubePlayerView;
+    String serieId;
+
 
     public SeriesFragmentOne() {
         // Required empty public constructor
+    }
+
+    public SeriesFragmentOne(String id){
+        serieId = id;
     }
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -51,6 +62,8 @@ public class SeriesFragmentOne extends Fragment {
         View view = inflater.inflate(R.layout.fragment_series_one, container, false);
 
         recyclerView = view.findViewById(R.id.seasonList);
+        youTubePlayerView = view.findViewById(R.id.seriePlayer);
+
         list = new ArrayList<>();
 
         //getData()
@@ -94,6 +107,10 @@ public class SeriesFragmentOne extends Fragment {
         FirebaseFirestore mFirestore;
         mFirestore = FirebaseFirestore.getInstance();
 
+
+
+        //URL WALKING DEAD: sfAc2U20uyg
+
         DocumentReference docRef = mFirestore.collection("Serie").document("1");
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
@@ -101,7 +118,7 @@ public class SeriesFragmentOne extends Fragment {
                 final TextView name = (TextView) view.findViewById(R.id.textViewTitle);
                 final TextView description = (TextView) view.findViewById(R.id.textViewDescription);
                 final ImageView portada = (ImageView) view.findViewById(R.id.imageViewPortadaSerie);
-                YouTubePlayer youTubePlayer = view.findViewById(R.id.seriePlayer);
+
 
                 String imageDB;
 
@@ -112,17 +129,18 @@ public class SeriesFragmentOne extends Fragment {
                         imageDB = document.getString("image");
                         name.setText(document.getString("name"));
                         description.setText(document.getString("description"));
+                        String url =document.getString("trailer");
+
                         Glide.with(getContext()).load(imageDB).into(portada);
 
-                        //youTubePlayer.loadVideo("sfAc2U20uyg", 0);
+                        youTubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
+                            @Override
+                            public void onReady(@NotNull YouTubePlayer youTubePlayer) {
+                                //super.onReady(youTubePlayer);
+                                youTubePlayer.loadVideo(url, 0);
+                            }
+                        });
 
-
-                        YouTubePlayerUtils.loadOrCueVideo(
-                                youTubePlayer,
-                                getLifecycle(),
-                                "sfAc2U20uyg",
-                                0
-                        );
 
                     } else {
                         Log.d("provaLog", "No such document");
