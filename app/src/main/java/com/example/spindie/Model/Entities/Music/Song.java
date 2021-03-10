@@ -3,12 +3,12 @@ package com.example.spindie.Model.Entities.Music;
 import androidx.fragment.app.Fragment;
 
 public class Song extends Fragment{
-    private String title;
-    private String artist;
     private String album;
-    private String src;
+    private String artist;
     private int min;
     private int seg;
+    private String src;
+    private String title;
 
     public Song(String title, String artist, String album, String src, int min, int seg) {
         this.title = title;

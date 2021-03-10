@@ -9,14 +9,12 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class ReadWriteMusic {
     FirebaseFirestore db;
-    private DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
-    private DatabaseReference musicRef;
     public ReadWriteMusic(FirebaseFirestore db){
         this.db = db;
     }
     public Song getSongById(int id){
         String idSong = String.valueOf(id);
-        DocumentReference docRef = db.collection("music").document(idSong);
+        DocumentReference docRef = db.collection("music").document("1");
         final Song[] song = new Song[1];
         docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                 @Override
