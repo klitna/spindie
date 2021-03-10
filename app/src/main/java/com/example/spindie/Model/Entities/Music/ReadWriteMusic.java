@@ -1,12 +1,16 @@
 package com.example.spindie.Model.Entities.Music;
 
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class ReadWriteMusic {
     FirebaseFirestore db;
+    private DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+    private DatabaseReference musicRef;
     public ReadWriteMusic(FirebaseFirestore db){
         this.db = db;
     }
