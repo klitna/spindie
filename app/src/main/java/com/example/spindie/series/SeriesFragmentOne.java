@@ -24,6 +24,7 @@ import com.bumptech.glide.Glide;
 import com.example.spindie.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -70,11 +71,13 @@ public class SeriesFragmentOne extends Fragment {
 
         getData(view);
 
+        getSeasonNumber();
+
         //Season recyclerView
-        Serie serie = new Serie("Season 1", "Betrayed Hamster");
+        /*Serie serie = new Serie("Season 1", "Betrayed Hamster");
         list.add(serie);
         SeasonAdapter seasonAdapter = new SeasonAdapter(list);
-        recyclerView.setAdapter(seasonAdapter);
+        recyclerView.setAdapter(seasonAdapter);*/
 
         //Vertical Scroll for description
         TextView desc= view.findViewById(R.id.textViewDescription);
@@ -133,13 +136,7 @@ public class SeriesFragmentOne extends Fragment {
 
                         Glide.with(getContext()).load(imageDB).into(portada);
 
-                        youTubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
-                            @Override
-                            public void onReady(@NotNull YouTubePlayer youTubePlayer) {
-                                //super.onReady(youTubePlayer);
-                                youTubePlayer.loadVideo(url, 0);
-                            }
-                        });
+                        setYouTuvePlayer(url);
 
 
                     } else {
@@ -151,6 +148,54 @@ public class SeriesFragmentOne extends Fragment {
             }
         });
     }
+
+    public void setYouTuvePlayer(String url){
+        //URL WALKING DEAD: sfAc2U20uyg
+        youTubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
+            @Override
+            public void onReady(@NotNull YouTubePlayer youTubePlayer) {
+                //super.onReady(youTubePlayer);
+                youTubePlayer.loadVideo(url, 0);
+            }
+        });
+    }
+
+    public void getSeasonNumber() {
+        FirebaseFirestore mFirestore;
+        mFirestore = FirebaseFirestore.getInstance();
+
+        ArrayList<Season> seasons = new ArrayList<>();
+
+        CollectionReference ref = mFirestore.collection("Serie").document("1")
+                .collection("seasons");
+        ref.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                QuerySnapshot collection = task.getResult();
+                int numDocs = collection.size();
+                Log.i("provaLog", "collection documents: "+collection.size());
+
+                for (int i=0; i!=numDocs; i++){
+                    seasons.add(new Season("s"+(i+1)));
+                }
+                SeasonAdapter seasonAdapter = new SeasonAdapter(seasons);
+                recyclerView.setAdapter(seasonAdapter);
+
+            }
+        });
+
+    }
+
+    /*public void getEpisodes(){
+        FirebaseFirestore mFirestore;
+        mFirestore = FirebaseFirestore.getInstance();
+
+        ArrayList<Episode> episodes = new ArrayList<>();
+        DocumentReference ref = mFirestore.collection("Serie").document("1")
+                .collection("seasons").document().
+    }*/
+
+
 
 }
 
