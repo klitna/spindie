@@ -12,7 +12,7 @@ public class User {
     private String nick;
     boolean isAuthor;
     ArrayList<Film> filmFav;
-    ArrayList<Serie> seriesFav;
+    //ArrayList<Serie> seriesFav;
     ArrayList<OST> OSTs;
 
     public User(){

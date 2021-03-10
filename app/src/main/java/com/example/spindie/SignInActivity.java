@@ -2,6 +2,7 @@ package com.example.spindie;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresPermission;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActionBar;
@@ -12,6 +13,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.spindie.Model.Entities.Music.ReadWriteMusic;
+import com.example.spindie.Model.Entities.Music.Song;
 import com.example.spindie.Model.Entities.User.ReadWriteUser;
 import com.example.spindie.Model.Entities.User.User;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -33,6 +36,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -40,6 +44,8 @@ import java.util.Map;
 public class SignInActivity extends AppCompatActivity {
     DatabaseReference dbReference = FirebaseDatabase.getInstance().getReference();
     ReadWriteUser dbUser = new ReadWriteUser(dbReference);
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    ReadWriteMusic dbMusic = new ReadWriteMusic(db);
     SignInButton btnGoogleLogin;
     GoogleSignInOptions gso;
     GoogleSignInClient mGoogleSignInClient;
@@ -107,6 +113,8 @@ public class SignInActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
+                    Song song = dbMusic.getSongById(1);
+                    Log.i("SONG", song.getSrc());
                     Toast.makeText(SignInActivity.this, "Login Successfully", Toast.LENGTH_SHORT).show();
                     checkUserIsAlreadyExistInDatabase(task);
                 } else {
