@@ -11,9 +11,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.spindie.MoviesFragment;
-import com.example.spindie.MusicFragment;
 import com.example.spindie.R;
+import com.example.spindie.fragments.MoviesFragment;
+import com.example.spindie.fragments.MusicFragment;
 import com.example.spindie.series.SeriesFragment;
 import com.example.spindie.series.SeriesFragmentOne;
 
