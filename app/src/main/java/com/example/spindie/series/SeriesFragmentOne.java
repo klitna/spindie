@@ -67,17 +67,9 @@ public class SeriesFragmentOne extends Fragment {
 
         list = new ArrayList<>();
 
-        //getData()
-
         getData(view);
 
         getSeasonNumber();
-
-        //Season recyclerView
-        /*Serie serie = new Serie("Season 1", "Betrayed Hamster");
-        list.add(serie);
-        SeasonAdapter seasonAdapter = new SeasonAdapter(list);
-        recyclerView.setAdapter(seasonAdapter);*/
 
         //Vertical Scroll for description
         TextView desc= view.findViewById(R.id.textViewDescription);
@@ -110,11 +102,9 @@ public class SeriesFragmentOne extends Fragment {
         FirebaseFirestore mFirestore;
         mFirestore = FirebaseFirestore.getInstance();
 
-
-
         //URL WALKING DEAD: sfAc2U20uyg
 
-        DocumentReference docRef = mFirestore.collection("Serie").document("1");
+        DocumentReference docRef = mFirestore.collection("Serie").document(serieId);
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -166,7 +156,7 @@ public class SeriesFragmentOne extends Fragment {
 
         ArrayList<Season> seasons = new ArrayList<>();
 
-        CollectionReference ref = mFirestore.collection("Serie").document("1")
+        CollectionReference ref = mFirestore.collection("Serie").document(serieId)
                 .collection("seasons");
         ref.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
@@ -185,18 +175,6 @@ public class SeriesFragmentOne extends Fragment {
         });
 
     }
-
-    /*public void getEpisodes(){
-        FirebaseFirestore mFirestore;
-        mFirestore = FirebaseFirestore.getInstance();
-
-        ArrayList<Episode> episodes = new ArrayList<>();
-        DocumentReference ref = mFirestore.collection("Serie").document("1")
-                .collection("seasons").document().
-    }*/
-
-
-
 }
 
 

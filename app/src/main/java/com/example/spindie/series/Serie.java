@@ -11,6 +11,7 @@ public class Serie {
     }
 
     public Serie(String id, String name, String image, @Nullable String autor){
+        this.id = id;
         this.name = name;
         this.image = image;
     }

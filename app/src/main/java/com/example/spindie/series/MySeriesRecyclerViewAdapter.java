@@ -1,6 +1,7 @@
 package com.example.spindie.series;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.menu.MenuView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -18,6 +19,11 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.spindie.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.w3c.dom.Text;
 
@@ -52,7 +58,7 @@ public class MySeriesRecyclerViewAdapter extends RecyclerView.Adapter<MySeriesRe
             @Override
             public void onClick(View v) {
 
-                goToSerieOne(holder.itemView);
+                goToSerieOne(v, holder.serie.getId());
 
             }
 
@@ -88,7 +94,7 @@ public class MySeriesRecyclerViewAdapter extends RecyclerView.Adapter<MySeriesRe
     }
 
 
-    public void goToSerieOne(View itemView) {
+    public void goToSerieOne(View itemView, String nameAsId) {
 
         /*Fragment seriesFragment = new SeriesFragment();
         FragmentManager menuManager =
@@ -98,10 +104,10 @@ public class MySeriesRecyclerViewAdapter extends RecyclerView.Adapter<MySeriesRe
 
         menuTransaction.addToBackStack(null).commit();*/
 
-
-
         AppCompatActivity activity = (AppCompatActivity) itemView.getContext();
-        Fragment myFragment = new SeriesFragmentOne();
+        Fragment myFragment = new SeriesFragmentOne(nameAsId);
         activity.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, myFragment).addToBackStack(null).commit();
     }
+
+
 }

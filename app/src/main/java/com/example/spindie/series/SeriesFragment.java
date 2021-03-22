@@ -107,34 +107,37 @@ public class SeriesFragment extends Fragment {
         FirebaseFirestore mFirestore;
         mFirestore = FirebaseFirestore.getInstance();
 
-        mFirestore.collection("Film")
+        mFirestore.collection("Serie")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
-                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                            String name, image;
-                            String id;
-                            if (task.isSuccessful()) {
-                                for (QueryDocumentSnapshot document : task.getResult()) {
-                                    Log.d("aa", document.getId() + " => " + document.getData());
-                                    Log.d("aa", "NOMBRE" + " => " + document.getString("name"));
-                                    name = document.getString("name");
-                                    image = document.getString("image");
-                                    id = document.getId();
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        String name, image;
+                        String id;
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d("aa", document.getId() + " => " + document.getData());
+                                Log.d("aa", "NOMBRE" + " => " + document.getString("name"));
+                                name = document.getString("name");
+                                image = document.getString("image");
+                                id = document.getId();
 
-                                    //Log.i("provaLog", "Nombre: "+name);
-                                    //Log.i("provaLog", "Image: "+image);
-                                    Serie serie = new Serie(id, name, image, "fakeAuthor");
-                                    serieList.add(serie);
-                                    //Log.i("provaLog", "size onComplete  : "+serieList.size());
-                                }
-                                callRecyclerView(view);
+                                //Log.i("provaLog", "Nombre: "+name);
+                                //Log.i("provaLog", "Image: "+image);
+                                Log.i("provaLog", "id: "+id);
+                                Serie serie = new Serie(id, name, image, "fakeAuthor");
+                                serieList.add(serie);
+                                //Log.i("provaLog", "size onComplete  : "+serieList.size());
 
 
-                                return;
-                            } else {
-                                Log.d("aa", "Error getting documents: ", task.getException());
                             }
+                            callRecyclerView(view);
+
+
+                            return;
+                        } else {
+                            Log.d("aa", "Error getting documents: ", task.getException());
+                        }
                     }
                 });
     }
