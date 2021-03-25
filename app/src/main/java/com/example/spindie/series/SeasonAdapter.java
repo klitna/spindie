@@ -49,7 +49,16 @@ public class SeasonAdapter extends RecyclerView.Adapter<SeasonAdapter.Holder> {
         String text = holder.title.getContext().getString(R.string.season, actualPos);
         holder.title.setText(text);
 
+        /*holder.expandableLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (holder.expandableLayout.getVisibility() == View.GONE){
+                    holder.expandableLayout.setVisibility(View.VISIBLE);
+                }else holder.expandableLayout.setVisibility(View.GONE);
 
+
+            }
+        });*/
         getEpisodeList(actualPos, holder);
 
         Log.i("SeasonAdapter", "some Info: "+episodeList.size());
@@ -87,29 +96,27 @@ public class SeasonAdapter extends RecyclerView.Adapter<SeasonAdapter.Holder> {
         }
     }
 
-    public void getEpisodeInfo(String seasonNumber, Holder holder){
+    public void getEpisodeInfo(String seasonNumber, Holder holder, int episodeNum) {
 
         FirebaseFirestore mFirestore;
         mFirestore = FirebaseFirestore.getInstance();
+        String ep = "ep"+(episodeNum+1);
+
 
         DocumentReference ref = mFirestore.collection("Serie").document("1")
-                .collection("seasons").document(seasonNumber).collection("episodes").document("ep1");
+                .collection("seasons").document(seasonNumber).collection("episodes").document(ep);
 
         ref.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 DocumentSnapshot document = task.getResult();
                 if (task.isSuccessful()){
-                    Log.d("SeasonAdapter", "DocumentSnapshot data EPISODE ADAPTER: " + document.getData());
+                    Log.d(TAG, "DocumentSnapshot data EPISODE ADAPTER: " + document.getData());
                     String name = document.getString("name");
                     //String desc = document.getString("description");
 
                     episodeList.add(new Episode(name, ""));
-
-                    EpisodeAdapter episodeAdapter = new EpisodeAdapter(episodeList);
-                    holder.recyclerView.setAdapter(episodeAdapter);
-
-                    Log.i("SeasonAdapter", "some Info dentro metodo: "+episodeList.size());
+                    Log.i(TAG, "some Info dentro metodo: "+episodeList.size());
                 }
 
             }
@@ -132,6 +139,13 @@ public class SeasonAdapter extends RecyclerView.Adapter<SeasonAdapter.Holder> {
                             QuerySnapshot collection = task.getResult();
                             num = collection.size();
                             Log.i("SeasonAdapter", "onComplete inside getEpisodeList");
+                            for (int i=0; i<num; i++){
+                                getEpisodeInfo(stringSeasonNumber, holder, i);
+                            }
+
+                            EpisodeAdapter episodeAdapter = new EpisodeAdapter(episodeList);
+                            holder.recyclerView.setAdapter(episodeAdapter);
+
                         }
                     }
                 });
