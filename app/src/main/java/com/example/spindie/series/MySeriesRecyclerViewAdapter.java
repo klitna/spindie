@@ -2,14 +2,9 @@ package com.example.spindie.series;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.Activity;
 import android.content.Context;
-import android.media.Image;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,8 +13,6 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.spindie.R;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -51,12 +44,8 @@ public class MySeriesRecyclerViewAdapter extends RecyclerView.Adapter<MySeriesRe
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 goToSerieOne(holder.itemView);
-
             }
-
-
         });
 
     }
@@ -75,8 +64,8 @@ public class MySeriesRecyclerViewAdapter extends RecyclerView.Adapter<MySeriesRe
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            portada = (ImageView) view.findViewById(R.id.imageViewPortada);
-            titulo = (TextView) view.findViewById(R.id.textViewTitulo);
+            portada = (ImageView) view.findViewById(R.id.imageViewSerieCover);
+            titulo = (TextView) view.findViewById(R.id.textViewSeriesTittle);
 
 
         }
@@ -97,8 +86,6 @@ public class MySeriesRecyclerViewAdapter extends RecyclerView.Adapter<MySeriesRe
         menuTransaction.replace(R.id.nav_host_fragment, seriesFragment);
 
         menuTransaction.addToBackStack(null).commit();*/
-
-
 
         AppCompatActivity activity = (AppCompatActivity) itemView.getContext();
         Fragment myFragment = new SeriesFragmentOne();

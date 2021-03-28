@@ -117,10 +117,6 @@ public class SeriesFragmentOne extends Fragment {
                         Log.i("provaLog", "youTubePlayerView.getId(): "+youTubePlayerView.getId());
 
                         //String setVideoUrl = getString(R.string.url, "HuI6i_IL6Y0");
-
-
-
-
                     } else {
                         Log.d("provaLog", "No such document");
                     }
@@ -132,23 +128,3 @@ public class SeriesFragmentOne extends Fragment {
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
