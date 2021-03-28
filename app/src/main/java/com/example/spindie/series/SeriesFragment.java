@@ -142,7 +142,7 @@ public class SeriesFragment extends Fragment {
         Collections.shuffle(serieList);
         Log.i("provaLog", "-----------------");
         for (int i=0; i<serieList.size(); i++){
-            Log.i("provaLog", serieList.get(i).getName());
+            //Log.i("provaLog", serieList.get(i).getName());
         }
 
 
