@@ -81,7 +81,7 @@ public class Film {
         this.titleES = titleES;
     }
 
-    public void setActorsEN(String actorsEN) {
+    public void setActors(String actors) {
         this.actors = actors;
     }
 
@@ -93,7 +93,7 @@ public class Film {
         this.descriptionES = descriptionES;
     }
 
-    public void setDirectorEN(String directorEN) {
+    public void setDirector(String director) {
         this.director = director;
     }
 

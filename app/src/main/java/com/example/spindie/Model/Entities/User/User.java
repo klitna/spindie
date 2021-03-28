@@ -2,6 +2,7 @@ package com.example.spindie.Model.Entities.User;
 
 import com.example.spindie.Model.Entities.Film.*;
 import com.example.spindie.Model.Entities.OST.OST;
+import com.example.spindie.Model.Entities.Series.Series;
 
 import java.util.ArrayList;
 
@@ -12,7 +13,7 @@ public class User {
     private String nick;
     boolean isAuthor;
     ArrayList<Film> filmFav;
-    //ArrayList<Serie> seriesFav;
+    ArrayList<Series> seriesFav;
     ArrayList<OST> OSTs;
 
     public User(){

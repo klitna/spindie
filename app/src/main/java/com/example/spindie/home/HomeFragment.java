@@ -13,7 +13,6 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.spindie.Model.Entities.Film.ReadWriteFilm;
 import com.example.spindie.Model.Entities.User.ReadWriteUser;
-import com.example.spindie.MoviesFragment;
 import com.example.spindie.MusicFragment;
 import com.example.spindie.R;
 import com.example.spindie.SeriesFragment;
@@ -32,8 +31,8 @@ public class HomeFragment extends Fragment {
         View viewHome = inflater.inflate(R.layout.fragment_home, container, false);
         DatabaseReference mDataBaseRef = FirebaseDatabase.getInstance().getReference();
         ReadWriteFilm db = new ReadWriteFilm(mDataBaseRef);
-        db.getFilmById("");
-        ImageButton imageButtonMovies = viewHome.findViewById(R.id.imageButtonMovies);
+        //db.getFilmById("");
+        /*ImageButton imageButtonMovies = viewHome.findViewById(R.id.imageButtonMovies);
         imageButtonMovies.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Log.i("testFr", "click fragment");
@@ -46,7 +45,7 @@ public class HomeFragment extends Fragment {
                 menuTransaction.commit();
 
             }
-        });
+        });*/
         ImageButton imageButtonSeries = viewHome.findViewById(R.id.imageButtonSeries);
         imageButtonSeries.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
