@@ -47,7 +47,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:background="@color/grey">
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/recyclerEpisode"
@@ -58,9 +59,25 @@
 
                     <Button
                         android:id="@+id/button"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Button" />
+                        android:layout_marginStart="20dp"
+                        android:text="Episode 1"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginBottom="-5dp"
+                        android:textColor="@color/black"
+                        android:backgroundTint="@color/green"
+                        />
+
+                    <Button
+                        android:id="@+id/button2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginLeft="8dp"
+                        android:text="Episode 2"
+                        android:textColor="@color/black"
+                        android:backgroundTint="@color/green"/>
 
                 </LinearLayout>
 

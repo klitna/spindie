@@ -41,13 +41,19 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.menu.YouTubePlaye
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.Random;
+
 
 public class SeriesFragmentOne extends Fragment {
     RecyclerView recyclerView;
     ArrayList<Serie> list;
     YouTubePlayerView youTubePlayerView;
     String serieId;
-
+    private final String TAG = "SeriesFragmentOne";
+    ArrayList<Season> seasons = new ArrayList<>();
+    ArrayList<Episode> episodeList = new ArrayList<>();
+    ArrayList<String> seasonNumber = new ArrayList<>();
+    int num;
 
     public SeriesFragmentOne() {
         // Required empty public constructor
@@ -71,6 +77,7 @@ public class SeriesFragmentOne extends Fragment {
 
         getSeasonNumber();
 
+
         //Vertical Scroll for description
         TextView desc= view.findViewById(R.id.textViewDescription);
         desc.setMovementMethod(new ScrollingMovementMethod());
@@ -78,20 +85,13 @@ public class SeriesFragmentOne extends Fragment {
         //Nested ScrollView - without this, description scroll does not work
         final ScrollView sv = view.findViewById(R.id.scrollView);
 
-        sv.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-
-                desc.getParent().requestDisallowInterceptTouchEvent(false);
-                return false;
-            }
+        sv.setOnTouchListener((v, event) -> {
+            desc.getParent().requestDisallowInterceptTouchEvent(false);
+            return false;
         });
-        desc.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                desc.getParent().requestDisallowInterceptTouchEvent(true);
-                return false;
-            }
+        desc.setOnTouchListener((v, event) -> {
+            desc.getParent().requestDisallowInterceptTouchEvent(true);
+            return false;
         });
 
 
@@ -153,27 +153,91 @@ public class SeriesFragmentOne extends Fragment {
     public void getSeasonNumber() {
         FirebaseFirestore mFirestore;
         mFirestore = FirebaseFirestore.getInstance();
+        DocumentReference ref = mFirestore.collection("Serie").document(serieId);
+        ref.get().addOnCompleteListener(task -> {
+            DocumentSnapshot document = task.getResult();
+            seasonNumber = (ArrayList<String>) document.get("seasons");
+            Log.i(TAG, "Get season number: "+ seasonNumber);
 
-        ArrayList<Season> seasons = new ArrayList<>();
-
-        CollectionReference ref = mFirestore.collection("Serie").document(serieId)
-                .collection("seasons");
-        ref.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                QuerySnapshot collection = task.getResult();
-                int numDocs = collection.size();
-                Log.i("provaLog", "collection documents: "+collection.size());
-
-                for (int i=0; i!=numDocs; i++){
-                    seasons.add(new Season("s"+(i+1)));
+            if (seasonNumber != null){
+                for (int i=0; i<seasonNumber.size(); i++){
+                    //getEpisodeNumber(mFirestore, seasonNumber.get(i));
+                    Log.i(TAG, "seasonNumber.get(i): "+seasonNumber.get(i));
+                    Log.i(TAG, "num: "+num);
+                    //int episodePerSeason = episodeNum();
+                    seasons.add(new Season(seasonNumber.get(i), num));
+                    //num = 0;
                 }
-                SeasonAdapter seasonAdapter = new SeasonAdapter(seasons);
-                recyclerView.setAdapter(seasonAdapter);
+            }else {
+                int episodePerSeason = episodeNum();
+                for (int i=0; i<episodePerSeason; i++){
+                    seasons.add(new Season("s"+(i+1), episodePerSeason));
+                }
 
             }
+
+            SeasonAdapter seasonAdapter = new SeasonAdapter(seasons);
+            recyclerView.setNestedScrollingEnabled(false);
+            recyclerView.setAdapter(seasonAdapter);
         });
 
+    }
+
+    public void getEpisodeNumber(FirebaseFirestore mFirestore, String seasonNumber){
+
+        ///Serie/1/seasons/s1
+        DocumentReference ref = mFirestore.collection("Serie").document(serieId)
+                .collection("seasons").document(seasonNumber);
+
+        ref.get().addOnCompleteListener(task -> {
+
+            if (task.isSuccessful()){
+                DocumentSnapshot document = task.getResult();
+                String Snum = document.getString("episodes");
+
+                num = Integer.parseInt(Snum);
+
+                Log.i(TAG, "onComplete inside: "+ seasonNumber);
+                Log.i(TAG, "onComplete inside: "+ num);
+                Log.i(TAG, "onComplete inside getEpisodeList");
+                /*for (int i=0; i<num; i++){
+                    getEpisodeInfo(mFirestore, seasonNumber, i);
+                }*/
+            }else{
+                Log.i(TAG, "Error Getting documents");
+            }
+        });
+    }
+
+
+    public void getEpisodeInfo(FirebaseFirestore mFirestore, String seasonNumber, int episodeNum) {
+
+        String ep = "ep" + (episodeNum + 1);
+
+
+        DocumentReference ref = mFirestore.collection("Serie").document("1")
+                .collection("seasons").document(seasonNumber).collection("episodes").document(ep);
+
+        ref.get().addOnCompleteListener(task -> {
+            DocumentSnapshot document = task.getResult();
+            if (task.isSuccessful()) {
+                //Log.d(TAG, "DocumentSnapshot data EPISODE ADAPTER: " + document.getData());
+                String name = document.getString("name");
+                //String desc = document.getString("description");
+
+                episodeList.add(new Episode(name, ""));
+                //Log.i(TAG, "some Info dentro metodo: " + episodeList.size());
+
+            }
+
+        });
+    }
+
+    public int episodeNum(){
+        Random random = new Random();
+        int num = random.nextInt(10 - 1 + 1) + 1;
+        Log.i("provaLog", "num value: "+num);
+        return num;
     }
 }
 

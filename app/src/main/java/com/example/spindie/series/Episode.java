@@ -1,5 +1,7 @@
 package com.example.spindie.series;
 
+import androidx.annotation.NonNull;
+
 public class Episode {
     private String name;
     private String description;
@@ -26,5 +28,11 @@ public class Episode {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return super.toString();
     }
 }

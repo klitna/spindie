@@ -24,9 +24,16 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class EpisodeAdapter extends RecyclerView.Adapter<EpisodeAdapter.Holder> {
-    ArrayList<Episode> episodes;
+    ArrayList<Integer> episodes;
+    int num;
 
-    public EpisodeAdapter(ArrayList<Episode> episodes) {
+    private final String TAG = "episodeAdapter";
+
+    public EpisodeAdapter(int num){
+        this.num=num;
+    }
+
+    public EpisodeAdapter(ArrayList<Integer> episodes) {
         this.episodes = episodes;
     }
 
@@ -34,20 +41,20 @@ public class EpisodeAdapter extends RecyclerView.Adapter<EpisodeAdapter.Holder> 
     @Override
     public EpisodeAdapter.Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.episodes, parent, false);
-
+        Log.i(TAG, "Accedido");
         return new Holder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull EpisodeAdapter.Holder holder, int position) {
         holder.buttonEpisode.setText("Something");
-        Log.i("aa", "Accedido");
+        Log.i(TAG, "Accedido");
     }
 
     @Override
     public int getItemCount() {
-        Log.i("provaLog", "getItemCOunt: "+ getItemCount());
-        return episodes.size();
+        Log.i(TAG, "getItemCOunt: "+ getItemCount());
+        return num;
     }
 
     public class Holder extends RecyclerView.ViewHolder{

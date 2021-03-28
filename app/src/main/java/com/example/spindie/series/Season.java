@@ -5,17 +5,22 @@ import java.util.ArrayList;
 public class Season {
     ArrayList<Episode> episodes;
     String name;
+    int episodeNumber;
     private boolean expanded;
 
     public Season() {
     }
+    public Season(String name, int episodes){
+        this.name = name;
+        this.episodeNumber = episodes;
+    }
 
-    public Season(String name) {
+    public Season(String name, ArrayList<Episode> episodes){
+        this.episodes = episodes;
         this.name = name;
     }
 
-    public Season(ArrayList<Episode> episodes, String name) {
-        this.episodes = episodes;
+    public Season(String name) {
         this.name = name;
     }
 
