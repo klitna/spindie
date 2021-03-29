@@ -1,10 +1,16 @@
 package com.example.spindie.series;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.menu.MenuView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.content.Context;
+import android.media.Image;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +19,13 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.spindie.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -44,8 +57,12 @@ public class MySeriesRecyclerViewAdapter extends RecyclerView.Adapter<MySeriesRe
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goToSerieOne(holder.itemView);
+
+                goToSerieOne(v, holder.serie.getId());
+
             }
+
+
         });
 
     }
@@ -64,8 +81,8 @@ public class MySeriesRecyclerViewAdapter extends RecyclerView.Adapter<MySeriesRe
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            portada = (ImageView) view.findViewById(R.id.imageViewSerieCover);
-            titulo = (TextView) view.findViewById(R.id.textViewSeriesTittle);
+            portada = (ImageView) view.findViewById(R.id.imageViewPortada);
+            titulo = (TextView) view.findViewById(R.id.textViewTitulo);
 
 
         }
@@ -77,7 +94,7 @@ public class MySeriesRecyclerViewAdapter extends RecyclerView.Adapter<MySeriesRe
     }
 
 
-    public void goToSerieOne(View itemView) {
+    public void goToSerieOne(View itemView, String nameAsId) {
 
         /*Fragment seriesFragment = new SeriesFragment();
         FragmentManager menuManager =
@@ -88,7 +105,9 @@ public class MySeriesRecyclerViewAdapter extends RecyclerView.Adapter<MySeriesRe
         menuTransaction.addToBackStack(null).commit();*/
 
         AppCompatActivity activity = (AppCompatActivity) itemView.getContext();
-        Fragment myFragment = new SeriesFragmentOne();
+        Fragment myFragment = new SeriesFragmentOne(nameAsId);
         activity.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, myFragment).addToBackStack(null).commit();
     }
+
+
 }

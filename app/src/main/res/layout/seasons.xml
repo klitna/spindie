@@ -13,17 +13,14 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/black"
-            android:backgroundTint="@color/black"
             android:visibility="visible">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:background="@color/blue"
+                android:background="#000000"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
@@ -32,30 +29,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:fontFamily="@font/poppins_bold"
                     android:text="Season 1"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
+                    android:textColor="#FFFFFF"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageView
-                    android:id="@+id/imageViewExpand"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginEnd="16dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/expand" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/expandableLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
@@ -63,31 +47,38 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/black"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:background="@color/grey">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerEpisode"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" >
+
+                    </androidx.recyclerview.widget.RecyclerView>
 
                     <Button
                         android:id="@+id/button"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="20dp"
-                        android:backgroundTint="@color/black"
-                        android:fontFamily="@font/poppins_light"
-                        android:gravity="start"
-                        android:text="@string/chapter1"
-                        android:textAllCaps="false"
-                        android:textSize="14sp" />
+                        android:layout_marginStart="20dp"
+                        android:text="Episode 1"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginBottom="-5dp"
+                        android:textColor="@color/black"
+                        android:backgroundTint="@color/green"
+                        />
 
                     <Button
                         android:id="@+id/button2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="20dp"
-                        android:backgroundTint="@color/black"
-                        android:fontFamily="@font/poppins_light"
-                        android:gravity="start"
-                        android:text="@string/chapter2"
-                        android:textAllCaps="false" />
+                        android:layout_marginStart="20dp"
+                        android:layout_marginLeft="8dp"
+                        android:text="Episode 2"
+                        android:textColor="@color/black"
+                        android:backgroundTint="@color/green"/>
+
                 </LinearLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
