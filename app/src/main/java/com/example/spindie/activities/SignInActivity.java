@@ -1,22 +1,15 @@
-package com.example.spindie;
+package com.example.spindie.activities;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresPermission;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.spindie.Model.Entities.Music.ReadWriteMusic;
-import com.example.spindie.Model.Entities.Music.Song;
-import com.example.spindie.Model.Entities.User.ReadWriteUser;
-import com.example.spindie.Model.Entities.User.User;
+import com.example.spindie.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -25,37 +18,30 @@ import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.firestore.FirebaseFirestore;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class SignInActivity extends AppCompatActivity {
-    DatabaseReference dbReference = FirebaseDatabase.getInstance().getReference();
-    ReadWriteUser dbUser = new ReadWriteUser(dbReference);
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
-    ReadWriteMusic dbMusic = new ReadWriteMusic(db);
     SignInButton btnGoogleLogin;
     GoogleSignInOptions gso;
     GoogleSignInClient mGoogleSignInClient;
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
     DatabaseReference mDataBaseRef = FirebaseDatabase.getInstance().getReference();
+
     public static final int RC_SIGN_IN = 121;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
+
+
         init();
         configureGoogleSignIn();
         onClicks();
@@ -79,6 +65,7 @@ public class SignInActivity extends AppCompatActivity {
         btnGoogleLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 startGoogleSignIn();
             }
         });
@@ -113,8 +100,6 @@ public class SignInActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    Song song = dbMusic.getSongById(1);
-                    Log.i("SONG", song.getSrc());
                     Toast.makeText(SignInActivity.this, "Login Successfully", Toast.LENGTH_SHORT).show();
                     checkUserIsAlreadyExistInDatabase(task);
                 } else {
@@ -126,19 +111,13 @@ public class SignInActivity extends AppCompatActivity {
 
     private void checkUserIsAlreadyExistInDatabase(Task<AuthResult> task) {
         final String loggedUserUniqueId = task.getResult().getUser().getUid();
-        final String userEmail = task.getResult().getUser().getEmail();
-        final String userName = task.getResult().getUser().getDisplayName();
         mDataBaseRef.child("Users").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.child(loggedUserUniqueId).exists()) {
-                    dbUser.getAllUsers();
-                    startActivity(new Intent(SignInActivity.this, MainActivity.class));
+                    startActivity(new Intent(SignInActivity.this, HomeActivity.class));
                     finish();
                 } else {
-                    dbUser.getAllUsers();
-                    User user = new User(userName, userEmail, loggedUserUniqueId);
-                    dbUser.writeNewUser(user);
                     startActivity(new Intent(SignInActivity.this, HomeActivity.class));
                     finish();
                 }
@@ -149,5 +128,6 @@ public class SignInActivity extends AppCompatActivity {
             }
         });
     }
+
 
 }

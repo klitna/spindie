@@ -8,15 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.spindie.Model.Entities.Film.ReadWriteFilm;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.firestore.FirebaseFirestore;
+import com.example.spindie.R;
 
-import java.util.concurrent.ExecutionException;
 
-public class MusicFragment extends Fragment {
+public class PlayerFragment extends Fragment {
 
-    public MusicFragment() {
+    public PlayerFragment() {
         // Required empty public constructor
     }
 
@@ -24,8 +21,6 @@ public class MusicFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View musicView =  inflater.inflate(R.layout.fragment_music, container, false);
-
-        return musicView;
+        return inflater.inflate(R.layout.fragment_player, container, false);
     }
 }

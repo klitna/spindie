@@ -1,4 +1,4 @@
-package com.example.spindie;
+package com.example.spindie.activities;
 
 import android.os.Bundle;
 
@@ -8,6 +8,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.example.spindie.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomeActivity extends AppCompatActivity {
@@ -20,6 +21,7 @@ public class HomeActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
+                R.id.navigation_profile,
                 R.id.navigation_home,
                 R.id.navigation_search,
                 R.id.navigation_store,
