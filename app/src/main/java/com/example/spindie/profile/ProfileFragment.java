@@ -38,8 +38,8 @@ public class ProfileFragment extends Fragment {
         PeliculasFavoritas.add(filfav1);
 
         RecyclerView recyclerView = profileView.findViewById(R.id.Recyclerview1);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(PeliculasFavoritas);
-        recyclerView.setAdapter(adapter);
+        //RecyclerViewAdapter adapter = new RecyclerViewAdapter(PeliculasFavoritas);
+        //recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager((profileView.getContext())));
 
         return profileView;
