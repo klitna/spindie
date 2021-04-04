@@ -1,23 +1,23 @@
-package com.example.spindie;
+package com.example.spindie.profile;
 
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.spindie.R;
-import com.example.spindie.Model.Entities.Film.Film;
-import com.example.spindie.Model.Entities.Film.ReadWriteFilm;
-import com.google.firebase.database.FirebaseDatabase;
+import com.example.spindie.fragments.RecyclerViewAdapter;
 
-import java.util.concurrent.ExecutionException;
-
-public class SeriesFragment extends Fragment {
+import java.util.ArrayList;
 
 public class ProfileFragment extends Fragment {
+    private ArrayList<filmsfavoritas> PeliculasFavoritas = new ArrayList<>();
+
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -27,16 +27,21 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false);
-        ReadWriteFilm rwf = new ReadWriteFilm(FirebaseDatabase.getInstance().getReference());
-        try {
-            Film testFilm = rwf.getFilmById(4);
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        View seriesView = inflater.inflate(R.layout.fragment_series, container, false);
-        return seriesView;
+
+
+        View profileView = inflater.inflate(R.layout.fragment_profile, container, false);
+
+        filmsfavoritas filfav = new filmsfavoritas(" PELICULA 1","https://pics.filmaffinity.com/occidente-872515504-large.jpg");
+        filmsfavoritas filfav1 = new filmsfavoritas(" PELICULA 2","https://pics.filmaffinity.com/occidente-872515504-large.jpg");
+
+        PeliculasFavoritas.add(filfav);
+        PeliculasFavoritas.add(filfav1);
+
+        RecyclerView recyclerView = profileView.findViewById(R.id.Recyclerview1);
+        //RecyclerViewAdapter adapter = new RecyclerViewAdapter(PeliculasFavoritas);
+        //recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager((profileView.getContext())));
+
+        return profileView;
     }
 }

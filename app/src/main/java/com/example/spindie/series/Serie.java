@@ -3,14 +3,15 @@ package com.example.spindie.series;
 import javax.annotation.Nullable;
 
 public class Serie {
-    private String name, link, image, year, autor, synopsis, seasonNumber, episodeName;
+    private String id, name, link, image, year, autor, synopsis, seasonNumber, episodeName;
     private boolean expanded;
 
     public Serie(){
 
     }
 
-    public Serie(String name, String image, @Nullable String autor){
+    public Serie(String id, String name, String image, @Nullable String autor){
+        this.id = id;
         this.name = name;
         this.image = image;
     }
@@ -91,5 +92,13 @@ public class Serie {
 
     public void setSynopsis(String synopsis) {
         this.synopsis = synopsis;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

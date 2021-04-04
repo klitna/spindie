@@ -30,6 +30,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -74,30 +75,8 @@ public class SeriesFragment extends Fragment {
 
         serieList = new ArrayList<>();
 
-        // Set the adapter
-        /*if (view instanceof RecyclerView) {
-            Context context = view.getContext();
-            RecyclerView recyclerView = (RecyclerView) view;
-            if (mColumnCount <= 1) {
-                recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            } else {
-                recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
-            }*/
-
-
-
-        serieList.add(new Serie("Shrek", "https://images.cdn2.buscalibre.com/fit-in/360x360/55/e2/55e28b4571d758e8efc35e6893eda69e.jpg", "Author"));
-        serieList.add(new Serie("Shrek", "https://images.cdn2.buscalibre.com/fit-in/360x360/55/e2/55e28b4571d758e8efc35e6893eda69e.jpg", "Author"));
-        serieList.add(new Serie("Shrek", "https://images.cdn2.buscalibre.com/fit-in/360x360/55/e2/55e28b4571d758e8efc35e6893eda69e.jpg", "Author"));
-        serieList.add(new Serie("Shrek", "https://images.cdn2.buscalibre.com/fit-in/360x360/55/e2/55e28b4571d758e8efc35e6893eda69e.jpg", "Author"));
-        serieList.add(new Serie("Shrek", "https://images.cdn2.buscalibre.com/fit-in/360x360/55/e2/55e28b4571d758e8efc35e6893eda69e.jpg", "Author"));
-        serieList.add(new Serie("Shrek", "https://images.cdn2.buscalibre.com/fit-in/360x360/55/e2/55e28b4571d758e8efc35e6893eda69e.jpg", "Author"));
-
         getData(view);
 
-
-
-        //}
         return view;
     }
 
@@ -106,42 +85,67 @@ public class SeriesFragment extends Fragment {
         FirebaseFirestore mFirestore;
         mFirestore = FirebaseFirestore.getInstance();
 
-        mFirestore.collection("Film")
+        mFirestore.collection("Serie")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
-                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                            String name, image;
-                            int id;
-                            if (task.isSuccessful()) {
-                                for (QueryDocumentSnapshot document : task.getResult()) {
-                                    Log.d("aa", document.getId() + " => " + document.getData());
-                                    Log.d("aa", "NOMBRE" + " => " + document.getString("name"));
-                                    name = document.getString("name");
-                                    image = document.getString("image");
-                                    Log.i("provaLog", "Nombre: "+name);
-                                    Log.i("provaLog", "Image: "+image);
-                                    Serie serie = new Serie(name, image, "fakeAuthor");
-                                    serieList.add(serie);
-                                    //Log.i("provaLog", "size onComplete  : "+serieList.size());
-                                }
-                                callRecyclerView(view);
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        String name, image;
+                        String id;
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d("aa", document.getId() + " => " + document.getData());
+                                Log.d("aa", "NOMBRE" + " => " + document.getString("name"));
+                                name = document.getString("name");
+                                image = document.getString("image");
+                                id = document.getId();
 
-
-                                return;
-                            } else {
-                                Log.d("aa", "Error getting documents: ", task.getException());
+                                Log.i("provaLog", "id: "+id);
+                                Serie serie = new Serie(id, name, image, "fakeAuthor");
+                                serieList.add(serie);
                             }
+                            callRecyclerView(view);
+
+
+                            return;
+                        } else {
+                            Log.d("aa", "Error getting documents: ", task.getException());
+                        }
                     }
                 });
     }
 
     public void callRecyclerView(View view){
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.list);
+        RecyclerView recyclerView2 = (RecyclerView) view.findViewById(R.id.recycler2);
+        RecyclerView recyclerView3 = (RecyclerView) view.findViewById(R.id.recycler3);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
+        LinearLayoutManager linearLayoutManager2 = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        recyclerView2.setLayoutManager(linearLayoutManager2);
+        LinearLayoutManager linearLayoutManager3 = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        recyclerView3.setLayoutManager(linearLayoutManager3);
         Log.i("provaLog", "Size Después de getData(): "+serieList.size());
+
+
+        ArrayList<RecyclerView> recyclers = new ArrayList<>();
+        recyclers.add(recyclerView);
+        recyclers.add(recyclerView2);
+        recyclers.add(recyclerView3);
+        for (int i=0; i<3; i++){
+            callOne(recyclers.get(i));
+        }
+
+    }
+    public void callOne(RecyclerView recyclerView){
+        Collections.shuffle(serieList);
+        Log.i("provaLog", "-----------------");
+        for (int i=0; i<serieList.size(); i++){
+            //Log.i("provaLog", serieList.get(i).getName());
+        }
+
+
         recyclerView.setAdapter(new MySeriesRecyclerViewAdapter(serieList));
     }
 }
