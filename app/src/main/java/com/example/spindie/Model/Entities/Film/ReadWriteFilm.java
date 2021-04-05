@@ -56,26 +56,16 @@ public class ReadWriteFilm {
         }
     }
 
-    public Film getFilmById(int id) throws ExecutionException, InterruptedException {
-        final Film[] f = new Film[1];
-        DocumentReference docRef = FirebaseFirestore.getInstance().collection("Film").document("4");
-        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    if (document != null) {
-                        Film film = task.getResult().toObject(Film.class);
-                        f[0] =film;
-                    } else {
-                        Log.d(TAG, "No such document");
-                    }
-                } else {
-                    Log.d(TAG, "get failed with ", task.getException());
-                }
-            }
-        });
-        return f[0];
+    public Film getFilmById(int id) {
+        DocumentReference docRef = db.collection("cities").document("SF");
+        ApiFuture<DocumentSnapshot> future = docRef.get();
+        DocumentSnapshot document = future.get();
+        if (document.exists()) {
+            System.out.println("Document data: " + document.getData());
+        } else {
+            System.out.println("No such document!");
+        }
+
     }
     public void writeNewFilmES(Film film) {
         // Create a new user with a first and last name
